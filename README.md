@@ -12,9 +12,9 @@ HID (Hidden Intention Discovery) focuses on discovering hidden intentions when h
 
 ## Framework
  <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/51cloud/HID/blob/main/image/motivation.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/51cloud/HID/blob/main/image/motivation.png">
-  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/51cloud/HID/blob/main/image/motivation.png">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/51cloud/HID/blob/main/image/framework.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/51cloud/HID/blob/main/image/framework.png">
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/51cloud/HID/blob/main/image/framework.png">
 </picture>
 
 ## License
