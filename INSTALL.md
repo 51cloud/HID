@@ -30,26 +30,26 @@
 ## Pytorch
 Please follow PyTorch official instructions to install from source:
 ```
-git clone --recursive https://github.com/pytorch/pytorch
+git clone --recursive https://github.com/51cloud/HID.git
 ```
 
 ## PySlowFast
 
 Clone the PySlowFast Video Understanding repository.
 ```
-git clone https://github.com/facebookresearch/slowfast
+git clone https://github.com/51cloud/HID/slowfast
 ```
 
 Add this repository to $PYTHONPATH.
 ```
-export PYTHONPATH=/path/to/SlowFast/slowfast:$PYTHONPATH
+export PYTHONPATH=/path/to/HID/slowfast:$PYTHONPATH
 ```
 
 ### Build PySlowFast
 
 After having the above dependencies, run:
 ```
-git clone https://github.com/facebookresearch/slowfast
+git clone https://github.com/51cloud/HID/slowfast
 cd SlowFast
 python setup.py build develop
 ```
