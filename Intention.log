@@ -1,0 +1,1524 @@
+Start slurm job at Wed Apr 26 14:22:59 CST 2023
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+[04/26 14:23:04][INFO] train_net:  444: Train with config:
+[04/26 14:23:04][INFO] train_net:  445: {'AVA': {'ANNOTATION_DIR': '/mnt/vol/gfsai-flash3-east/ai-group/users/haoqifan/ava/frame_list/',
+         'BGR': False,
+         'DETECTION_SCORE_THRESH': 0.9,
+         'EXCLUSION_FILE': 'ava_val_excluded_timestamps_v2.2.csv',
+         'FRAME_DIR': '/mnt/fair-flash3-east/ava_trainval_frames.img/',
+         'FRAME_LIST_DIR': '/mnt/vol/gfsai-flash3-east/ai-group/users/haoqifan/ava/frame_list/',
+         'FULL_TEST_ON_VAL': False,
+         'GROUNDTRUTH_FILE': 'ava_val_v2.2.csv',
+         'IMG_PROC_BACKEND': 'cv2',
+         'LABEL_MAP_FILE': 'ava_action_list_v2.2_for_activitynet_2019.pbtxt',
+         'TEST_FORCE_FLIP': False,
+         'TEST_LISTS': ['val.csv'],
+         'TEST_PREDICT_BOX_LISTS': ['ava_val_predicted_boxes.csv'],
+         'TRAIN_GT_BOX_LISTS': ['ava_train_v2.2.csv'],
+         'TRAIN_LISTS': ['train.csv'],
+         'TRAIN_PCA_EIGVAL': [0.225, 0.224, 0.229],
+         'TRAIN_PCA_EIGVEC': [[-0.5675, 0.7192, 0.4009],
+                              [-0.5808, -0.0045, -0.814],
+                              [-0.5836, -0.6948, 0.4203]],
+         'TRAIN_PCA_JITTER_ONLY': True,
+         'TRAIN_PREDICT_BOX_LISTS': [],
+         'TRAIN_USE_COLOR_AUGMENTATION': False},
+ 'BENCHMARK': CfgNode({'NUM_EPOCHS': 5, 'LOG_PERIOD': 100, 'SHUFFLE': True}),
+ 'BN': {'NORM_TYPE': 'batchnorm',
+        'NUM_BATCHES_PRECISE': 200,
+        'NUM_SPLITS': 1,
+        'NUM_SYNC_DEVICES': 1,
+        'USE_PRECISE_STATS': True,
+        'WEIGHT_DECAY': 0.0},
+ 'DATA': {'CROP_SIZE': 224,
+          'DECODING_BACKEND': 'pyav',
+          'ENSEMBLE_METHOD': 'sum',
+          'INPUT_CHANNEL_NUM': [3],
+          'INV_UNIFORM_SAMPLE': False,
+          'MEAN': [0.45, 0.45, 0.45],
+          'MULTI_LABEL': False,
+          'NUM_FRAMES': 8,
+          'OLD_PATH_TO_DATA_DIR': '',
+          'PATH_LABEL_SEPARATOR': ' ',
+          'PATH_PREFIX': '',
+          'PATH_TO_DATA_DIR': '/public/home/zhouz/perl5/dataset/crime/list3/',
+          'RANDOM_FLIP': True,
+          'REVERSE_INPUT_CHANNEL': False,
+          'SAMPLING_RATE': 8,
+          'STD': [0.225, 0.225, 0.225],
+          'TARGET_FPS': 30,
+          'TEST_CROP_SIZE': 224,
+          'TRAIN_CROP_SIZE': 224,
+          'TRAIN_JITTER_SCALES': [256, 320]},
+ 'DATA_LOADER': {'ENABLE_MULTI_THREAD_DECODE': False,
+                 'NUM_WORKERS': 0,
+                 'PIN_MEMORY': False},
+ 'DEMO': {'BUFFER_SIZE': 0,
+          'CLIP_VIS_SIZE': 10,
+          'COMMON_CLASS_NAMES': ['watch (a person)',
+                                 'talk to (e.g., self, a person, a group)',
+                                 'listen to (a person)',
+                                 'touch (an object)',
+                                 'carry/hold (an object)',
+                                 'walk',
+                                 'sit',
+                                 'lie/sleep',
+                                 'bend/bow (at the waist)'],
+          'COMMON_CLASS_THRES': 0.7,
+          'DETECTRON2_CFG': 'COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml',
+          'DETECTRON2_THRESH': 0.9,
+          'DETECTRON2_WEIGHTS': 'detectron2://COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl',
+          'DISPLAY_HEIGHT': 0,
+          'DISPLAY_WIDTH': 0,
+          'ENABLE': False,
+          'FPS': 30,
+          'GT_BOXES': '',
+          'INPUT_FORMAT': 'BGR',
+          'INPUT_VIDEO': '',
+          'LABEL_FILE_PATH': '',
+          'NUM_CLIPS_SKIP': 0,
+          'NUM_VIS_INSTANCES': 2,
+          'OUTPUT_FILE': '',
+          'OUTPUT_FPS': -1,
+          'PREDS_BOXES': '',
+          'SLOWMO': 1,
+          'STARTING_SECOND': 900,
+          'THREAD_ENABLE': False,
+          'UNCOMMON_CLASS_THRES': 0.3,
+          'VIS_MODE': 'thres',
+          'WEBCAM': -1},
+ 'DETECTION': {'ALIGNED': True,
+               'ENABLE': False,
+               'ROI_XFORM_RESOLUTION': 7,
+               'SPATIAL_SCALE_FACTOR': 16},
+ 'DIST_BACKEND': 'nccl',
+ 'LOG_MODEL_INFO': True,
+ 'LOG_PERIOD': 10,
+ 'MODEL': {'ARCH': 'slow',
+           'DROPOUT_RATE': 0.5,
+           'FC_INIT_STD': 0.01,
+           'HEAD_ACT': 'softmax',
+           'LOSS_FUNC': 'cross_entropy',
+           'MODEL_NAME': 'ResNet',
+           'MULTI_PATHWAY_ARCH': ['slowfast'],
+           'NUM_CLASSES': 2,
+           'OLD_MODEL_NAME': 'OLD_ResNet',
+           'OLD_NUM_CLASSES': 2,
+           'SINGLE_PATHWAY_ARCH': ['c2d', 'i3d', 'slow']},
+ 'MULTIGRID': {'BN_BASE_SIZE': 8,
+               'DEFAULT_B': 0,
+               'DEFAULT_S': 0,
+               'DEFAULT_T': 0,
+               'EPOCH_FACTOR': 1.5,
+               'EVAL_FREQ': 3,
+               'LONG_CYCLE': False,
+               'LONG_CYCLE_FACTORS': [(0.25, 0.7071067811865476),
+                                      (0.5, 0.7071067811865476),
+                                      (0.5, 1),
+                                      (1, 1)],
+               'LONG_CYCLE_SAMPLING_RATE': 0,
+               'SHORT_CYCLE': False,
+               'SHORT_CYCLE_FACTORS': [0.5, 0.7071067811865476]},
+ 'NONLOCAL': {'GROUP': [[1], [1], [1], [1]],
+              'INSTANTIATION': 'dot_product',
+              'LOCATION': [[[]], [[]], [[]], [[]]],
+              'POOL': [[[1, 2, 2], [1, 2, 2]],
+                       [[1, 2, 2], [1, 2, 2]],
+                       [[1, 2, 2], [1, 2, 2]],
+                       [[1, 2, 2], [1, 2, 2]]]},
+ 'NUM_GPUS': 1,
+ 'NUM_SHARDS': 1,
+ 'OUTPUT_DIR': './intention',
+ 'RESNET': {'DEPTH': 50,
+            'INPLACE_RELU': True,
+            'NUM_BLOCK_TEMP_KERNEL': [[3], [4], [6], [3]],
+            'NUM_GROUPS': 1,
+            'SPATIAL_DILATIONS': [[1], [1], [1], [1]],
+            'SPATIAL_STRIDES': [[1], [2], [2], [2]],
+            'STRIDE_1X1': False,
+            'TRANS_FUNC': 'bottleneck_transform',
+            'WIDTH_PER_GROUP': 64,
+            'ZERO_INIT_FINAL_BN': True},
+ 'RNG_SEED': 0,
+ 'SHARD_ID': 0,
+ 'SLOWFAST': {'ALPHA': 8,
+              'BETA_INV': 8,
+              'FUSION_CONV_CHANNEL_RATIO': 2,
+              'FUSION_KERNEL_SZ': 5},
+ 'SOLVER': {'BASE_LR': 0.0005,
+            'DAMPENING': 0.0,
+            'GAMMA': 0.1,
+            'LRS': [],
+            'LR_POLICY': 'cosine',
+            'MAX_EPOCH': 60,
+            'MOMENTUM': 0.9,
+            'NESTEROV': True,
+            'OPTIMIZING_METHOD': 'sgd',
+            'STEPS': [],
+            'STEP_SIZE': 1,
+            'WARMUP_EPOCHS': 0.0,
+            'WARMUP_FACTOR': 0.1,
+            'WARMUP_START_LR': 0.01,
+            'WEIGHT_DECAY': 1e-06},
+ 'TENSORBOARD': {'CATEGORIES_PATH': '',
+                 'CLASS_NAMES_PATH': '',
+                 'CONFUSION_MATRIX': {'ENABLE': False,
+                                      'FIGSIZE': [8, 8],
+                                      'SUBSET_PATH': ''},
+                 'ENABLE': False,
+                 'HISTOGRAM': {'ENABLE': False,
+                               'FIGSIZE': [8, 8],
+                               'SUBSET_PATH': '',
+                               'TOPK': 10},
+                 'LOG_DIR': '',
+                 'MODEL_VIS': {'ACTIVATIONS': False,
+                               'COLORMAP': 'Pastel2',
+                               'ENABLE': False,
+                               'GRAD_CAM': {'COLORMAP': 'viridis',
+                                            'ENABLE': True,
+                                            'LAYER_LIST': [],
+                                            'USE_TRUE_LABEL': False},
+                               'INPUT_VIDEO': False,
+                               'LAYER_LIST': [],
+                               'MODEL_WEIGHTS': False,
+                               'TOPK_PREDS': 1},
+                 'PREDICTIONS_PATH': '',
+                 'WRONG_PRED_VIS': {'ENABLE': False,
+                                    'SUBSET_PATH': '',
+                                    'TAG': 'Incorrectly classified videos.'}},
+ 'TEST': {'BATCH_SIZE': 32,
+          'CHECKPOINT_FILE_PATH': '',
+          'CHECKPOINT_TYPE': 'pytorch',
+          'DATASET': 'kinetics',
+          'ENABLE': True,
+          'NUM_ENSEMBLE_VIEWS': 10,
+          'NUM_SPATIAL_CROPS': 3,
+          'OLD_DATASET': 'old_kinetics',
+          'SAVE_RESULTS_PATH': ''},
+ 'TRAIN': {'AUTO_RESUME': True,
+           'BATCH_SIZE': 8,
+           'CHECKPOINT_FILE_PATH': '/public/home/zhouz/perl5/Drone-ICIL/pretrained/SLOWONLY_8x8_R50.pkl',
+           'CHECKPOINT_INFLATE': True,
+           'CHECKPOINT_PERIOD': 1,
+           'CHECKPOINT_TYPE': 'caffe2',
+           'DATASET': 'kinetics',
+           'ENABLE': True,
+           'EVAL_PERIOD': 10,
+           'OLD_DATASET': 'Oldkinetics'}}
+[04/26 14:23:09][INFO] slowfast.utils.checkpoint:  436: Load from last checkpoint, ./intention/checkpoints/checkpoint_epoch_00010.pyth.
+[04/26 14:23:10][INFO] slowfast.datasets.kinetics:   75: Constructing Kinetics train...
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal001.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal002.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal003.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal004.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal005.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal006.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal007.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal008.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal009.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal010.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal011.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal012.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal013.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal014.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal015.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal016.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal017.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal018.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal019.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal020.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal021.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal022.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal023.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal024.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal025.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal026.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal027.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal028.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal029.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal030.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal031.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal032.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal033.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal034.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal035.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal036.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal037.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal038.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal039.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal040.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal041.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal042.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal043.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal044.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal045.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal046.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal047.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal048.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal049.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal050.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal051.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal052.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal053.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal054.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal055.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal056.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal057.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal058.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal059.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal060.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal061.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal062.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal063.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal064.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal065.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal066.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal067.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal068.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal069.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal070.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal071.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal072.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal073.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal074.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal075.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal076.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal077.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal078.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal079.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal080.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal081.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal082.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal083.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal084.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal085.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal086.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal087.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal088.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal089.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal090.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal091.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal092.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal093.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal094.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal095.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal096.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal097.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal098.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal099.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal100.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal101.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal102.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal103.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal104.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal105.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal106.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal107.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal108.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal109.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal110.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal111.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal112.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal113.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal114.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal115.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal116.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal117.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal118.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal119.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal120.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal121.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal122.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal123.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal124.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal125.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal126.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal127.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal128.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal129.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal130.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal131.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal132.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal133.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal134.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal135.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal136.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal137.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal138.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal139.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal140.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal141.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal142.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal143.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal144.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal145.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal146.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal147.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal148.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal149.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal150.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal151.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal152.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal153.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal154.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal155.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal156.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal157.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal158.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal159.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal160.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal161.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal162.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal163.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal164.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal165.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal166.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal167.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal168.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal169.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal170.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal171.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal172.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal173.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal174.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal175.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal176.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal177.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal178.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal179.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal180.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal181.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal182.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal183.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal184.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal185.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal186.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal187.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal188.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal189.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal190.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal191.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal192.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal193.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal194.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal195.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal196.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal197.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal198.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal199.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal200.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal201.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal202.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal203.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal204.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal205.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal206.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal207.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal208.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal209.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal210.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal211.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal212.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal213.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal214.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal215.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal216.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal217.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal218.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal219.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal220.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal221.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal222.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal223.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal224.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal225.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal226.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal227.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal228.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal229.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal230.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal231.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal232.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal233.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal234.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal235.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal236.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal237.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal238.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal239.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal240.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal241.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal242.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal243.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal244.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal245.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal246.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal247.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal248.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal249.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal250.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal251.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal252.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal253.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal254.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal255.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal256.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal257.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal258.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal259.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal260.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal261.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal262.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal263.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal264.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal265.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal266.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal267.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal268.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal269.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal270.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal271.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal272.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal273.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal274.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal275.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal276.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal277.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal278.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal279.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal280.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal281.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal282.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal283.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal284.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal285.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal286.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal287.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal288.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal289.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal290.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal291.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal292.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal293.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal294.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal295.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal296.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal297.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal298.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal299.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal300.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal301.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal302.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal303.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal304.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal305.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal306.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal307.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal308.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal309.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal310.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal311.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal312.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal313.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal314.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal315.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal316.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal317.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal318.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal319.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal320.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal321.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal322.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal323.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal324.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal325.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal326.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal327.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal328.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal329.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal330.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing001.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing002.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing003.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing004.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing005.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing006.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing007.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing008.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing009.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing010.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing011.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing012.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing013.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing014.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing015.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing016.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing017.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing018.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing019.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing020.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing021.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing022.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing023.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing024.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing025.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing026.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing027.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing028.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing029.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing030.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing031.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing032.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing033.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing034.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing035.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing036.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing037.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing038.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing039.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing040.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing041.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing042.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing043.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing044.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing045.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing046.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing047.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing048.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing049.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing050.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing051.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing052.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing053.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing054.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing055.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing056.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing057.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing058.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing059.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing060.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing061.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing062.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing063.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing064.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing065.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing066.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing067.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing068.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing069.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing070.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing071.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing072.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing073.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing074.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing075.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing076.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing077.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing078.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing079.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing080.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing081.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing082.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing083.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing084.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing085.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing086.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing087.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing088.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing089.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing090.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing091.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing092.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing093.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing094.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing095.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing096.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing097.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing098.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing099.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing100.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing101.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing102.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing103.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing104.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing105.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing106.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing107.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing108.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing109.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing110.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing111.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing112.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing113.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing114.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing115.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing116.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing117.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing118.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing119.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing120.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing121.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing122.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing123.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing124.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing125.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing126.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing127.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing128.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing129.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing130.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing131.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing132.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing133.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing134.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing135.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing136.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing137.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing138.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing139.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing140.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing141.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing142.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing143.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing144.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing145.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing146.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing147.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing148.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing149.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing150.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing151.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing152.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing153.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing154.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing155.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing156.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing157.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing158.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing159.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing160.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing161.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing162.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing163.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing164.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing165.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing166.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing167.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing168.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing169.mp4
+[04/26 14:23:10][INFO] slowfast.datasets.kinetics:  136: Constructing kinetics dataloader (size: 499) from /public/home/zhouz/perl5/dataset/crime/list3/train.csv
+[04/26 14:23:10][INFO] slowfast.datasets.kinetics:   75: Constructing Kinetics val...
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal331.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal332.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal333.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal334.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal335.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal336.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal337.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal338.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal339.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal340.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal341.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal342.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal343.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal344.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal345.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal346.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal347.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal348.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal349.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal350.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal351.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal352.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal353.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal354.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal355.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal356.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal357.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal358.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal359.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal360.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal361.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal362.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal363.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal364.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal365.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal366.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal367.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal368.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal369.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal370.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal371.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal372.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal373.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal374.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal375.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal376.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal377.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal378.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal379.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal380.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal381.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal382.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal383.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal384.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal385.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal386.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal387.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal388.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal389.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal390.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal391.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal392.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal393.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal394.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal395.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal396.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal397.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal398.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal399.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal400.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal401.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal402.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal403.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal404.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal405.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal406.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal407.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal408.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal409.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal410.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal411.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal412.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal413.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal414.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal415.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal416.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal417.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal418.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal419.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal420.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal421.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal422.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal423.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal424.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal425.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal426.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal427.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal428.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal429.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal430.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal431.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal432.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal433.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal434.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal435.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal436.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal437.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal438.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal439.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal440.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal441.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal442.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal443.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal444.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal445.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal446.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal447.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal448.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal449.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal450.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal451.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal452.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal453.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal454.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal455.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal456.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal457.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal458.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal459.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal460.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal461.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal462.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal463.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal464.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal465.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal466.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal467.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal468.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal469.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal470.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal471.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal472.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal473.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal474.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal475.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing170.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing171.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing172.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing173.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing174.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing175.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing176.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing177.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing178.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing179.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing180.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing181.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing182.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing183.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing184.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing185.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing186.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing187.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing188.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing189.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing190.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing191.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing192.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing193.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing194.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing195.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing196.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing197.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing198.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing199.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing200.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing201.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing202.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing203.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing204.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing205.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing206.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing207.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing208.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing209.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing210.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing211.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing212.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing213.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing214.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing215.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing216.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing217.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing218.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing219.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing220.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing221.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing222.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing223.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing224.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing225.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing226.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing227.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing228.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing229.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing230.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing231.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing232.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing233.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing234.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing235.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing236.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing237.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing238.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing239.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing240.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing241.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing242.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing243.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing244.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing245.mp4
+[04/26 14:23:10][INFO] slowfast.datasets.kinetics:  136: Constructing kinetics dataloader (size: 221) from /public/home/zhouz/perl5/dataset/crime/list3/val.csv
+[04/26 14:23:10][INFO] slowfast.datasets.kinetics:   75: Constructing Kinetics train...
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal001.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal002.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal003.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal004.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal005.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal006.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal007.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal008.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal009.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal010.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal011.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal012.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal013.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal014.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal015.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal016.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal017.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal018.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal019.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal020.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal021.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal022.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal023.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal024.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal025.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal026.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal027.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal028.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal029.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal030.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal031.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal032.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal033.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal034.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal035.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal036.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal037.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal038.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal039.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal040.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal041.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal042.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal043.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal044.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal045.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal046.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal047.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal048.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal049.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal050.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal051.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal052.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal053.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal054.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal055.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal056.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal057.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal058.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal059.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal060.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal061.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal062.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal063.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal064.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal065.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal066.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal067.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal068.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal069.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal070.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal071.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal072.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal073.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal074.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal075.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal076.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal077.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal078.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal079.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal080.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal081.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal082.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal083.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal084.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal085.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal086.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal087.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal088.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal089.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal090.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal091.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal092.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal093.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal094.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal095.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal096.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal097.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal098.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal099.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal100.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal101.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal102.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal103.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal104.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal105.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal106.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal107.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal108.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal109.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal110.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal111.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal112.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal113.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal114.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal115.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal116.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal117.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal118.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal119.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal120.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal121.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal122.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal123.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal124.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal125.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal126.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal127.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal128.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal129.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal130.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal131.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal132.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal133.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal134.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal135.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal136.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal137.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal138.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal139.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal140.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal141.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal142.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal143.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal144.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal145.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal146.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal147.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal148.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal149.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal150.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal151.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal152.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal153.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal154.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal155.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal156.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal157.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal158.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal159.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal160.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal161.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal162.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal163.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal164.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal165.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal166.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal167.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal168.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal169.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal170.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal171.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal172.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal173.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal174.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal175.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal176.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal177.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal178.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal179.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal180.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal181.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal182.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal183.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal184.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal185.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal186.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal187.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal188.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal189.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal190.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal191.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal192.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal193.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal194.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal195.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal196.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal197.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal198.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal199.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal200.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal201.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal202.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal203.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal204.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal205.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal206.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal207.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal208.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal209.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal210.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal211.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal212.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal213.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal214.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal215.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal216.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal217.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal218.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal219.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal220.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal221.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal222.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal223.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal224.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal225.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal226.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal227.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal228.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal229.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal230.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal231.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal232.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal233.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal234.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal235.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal236.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal237.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal238.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal239.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal240.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal241.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal242.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal243.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal244.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal245.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal246.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal247.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal248.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal249.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal250.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal251.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal252.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal253.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal254.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal255.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal256.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal257.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal258.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal259.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal260.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal261.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal262.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal263.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal264.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal265.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal266.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal267.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal268.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal269.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal270.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal271.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal272.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal273.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal274.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal275.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal276.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal277.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal278.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal279.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal280.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal281.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal282.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal283.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal284.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal285.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal286.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal287.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal288.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal289.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal290.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal291.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal292.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal293.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal294.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal295.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal296.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal297.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal298.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal299.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal300.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal301.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal302.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal303.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal304.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal305.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal306.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal307.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal308.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal309.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal310.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal311.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal312.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal313.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal314.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal315.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal316.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal317.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal318.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal319.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal320.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal321.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal322.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal323.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal324.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal325.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal326.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal327.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal328.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal329.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Normal/normal330.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing001.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing002.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing003.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing004.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing005.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing006.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing007.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing008.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing009.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing010.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing011.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing012.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing013.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing014.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing015.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing016.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing017.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing018.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing019.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing020.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing021.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing022.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing023.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing024.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing025.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing026.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing027.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing028.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing029.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing030.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing031.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing032.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing033.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing034.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing035.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing036.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing037.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing038.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing039.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing040.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing041.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing042.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing043.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing044.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing045.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing046.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing047.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing048.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing049.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing050.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing051.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing052.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing053.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing054.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing055.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing056.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing057.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing058.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing059.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing060.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing061.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing062.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing063.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing064.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing065.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing066.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing067.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing068.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing069.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing070.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing071.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing072.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing073.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing074.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing075.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing076.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing077.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing078.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing079.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing080.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing081.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing082.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing083.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing084.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing085.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing086.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing087.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing088.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing089.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing090.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing091.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing092.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing093.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing094.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing095.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing096.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing097.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing098.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing099.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing100.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing101.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing102.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing103.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing104.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing105.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing106.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing107.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing108.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing109.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing110.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing111.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing112.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing113.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing114.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing115.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing116.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing117.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing118.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing119.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing120.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing121.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing122.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing123.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing124.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing125.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing126.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing127.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing128.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing129.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing130.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing131.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing132.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing133.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing134.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing135.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing136.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing137.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing138.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing139.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing140.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing141.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing142.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing143.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing144.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing145.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing146.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing147.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing148.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing149.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing150.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing151.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing152.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing153.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing154.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing155.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing156.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing157.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing158.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing159.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing160.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing161.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing162.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing163.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing164.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing165.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing166.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing167.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing168.mp4
+path: /public/home/zhouz/perl5/dataset/crime/Before_Stealing/Before_Stealing169.mp4
+[04/26 14:23:10][INFO] slowfast.datasets.kinetics:  136: Constructing kinetics dataloader (size: 499) from /public/home/zhouz/perl5/dataset/crime/list3/train.csv
+[04/26 14:23:10][INFO] train_net:  489: Start epoch: 11
+[04/26 14:34:38][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "11/60", "eta": "1 day, 19:41:46", "gpu_mem": "7.11 GB", "iter": "10/62", "loss": 0.191834, "lr": 0.000466, "time_diff": 50.908323, "top1_err": 12.500000, "top3_err": 0.000000}
+[04/26 14:48:14][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "11/60", "eta": "2 days, 11:18:52", "gpu_mem": "7.11 GB", "iter": "20/62", "loss": 0.205436, "lr": 0.000464, "time_diff": 69.328878, "top1_err": 6.250000, "top3_err": 0.000000}
+[04/26 15:00:46][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "11/60", "eta": "2 days, 13:34:03", "gpu_mem": "7.11 GB", "iter": "30/62", "loss": 0.106470, "lr": 0.000463, "time_diff": 72.196707, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 15:15:55][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "11/60", "eta": "2 days, 22:20:10", "gpu_mem": "7.11 GB", "iter": "40/62", "loss": 0.042846, "lr": 0.000462, "time_diff": 82.748457, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 15:28:53][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "11/60", "eta": "2 days, 16:02:32", "gpu_mem": "7.11 GB", "iter": "50/62", "loss": 0.126947, "lr": 0.000461, "time_diff": 75.590895, "top1_err": 6.250000, "top3_err": 0.000000}
+[04/26 15:40:09][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "11/60", "eta": "2 days, 9:42:29", "gpu_mem": "7.11 GB", "iter": "60/62", "loss": 0.093388, "lr": 0.000460, "time_diff": 68.338731, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 15:42:40][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "22.95/219.90 GB", "_type": "train_epoch", "epoch": "11/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.159345, "lr": 0.000460, "time_diff": 0.000360, "top1_err": 5.241935, "top3_err": 0.000000}
+[04/26 15:54:22][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "12/60", "eta": "2 days, 6:40:47", "gpu_mem": "7.11 GB", "iter": "10/62", "loss": 0.103190, "lr": 0.000459, "time_diff": 65.008933, "top1_err": 6.250000, "top3_err": 0.000000}
+[04/26 16:06:28][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "12/60", "eta": "2 days, 21:59:14", "gpu_mem": "7.11 GB", "iter": "20/62", "loss": 0.088801, "lr": 0.000457, "time_diff": 83.484020, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 16:20:35][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "12/60", "eta": "3 days, 5:52:31", "gpu_mem": "7.11 GB", "iter": "30/62", "loss": 0.074817, "lr": 0.000456, "time_diff": 93.202043, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 16:33:10][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "12/60", "eta": "2 days, 2:24:52", "gpu_mem": "7.11 GB", "iter": "40/62", "loss": 0.026397, "lr": 0.000455, "time_diff": 60.537831, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 16:45:35][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "12/60", "eta": "2 days, 0:22:35", "gpu_mem": "7.11 GB", "iter": "50/62", "loss": 0.148019, "lr": 0.000454, "time_diff": 58.285052, "top1_err": 6.250000, "top3_err": 0.000000}
+[04/26 17:00:07][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "12/60", "eta": "2 days, 15:55:44", "gpu_mem": "7.11 GB", "iter": "60/62", "loss": 0.112215, "lr": 0.000453, "time_diff": 77.281668, "top1_err": 12.500000, "top3_err": 0.000000}
+[04/26 17:02:23][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "23.23/219.90 GB", "_type": "train_epoch", "epoch": "12/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.145060, "lr": 0.000452, "time_diff": 0.000212, "top1_err": 6.451613, "top3_err": 0.000000}
+[04/26 17:15:09][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "13/60", "eta": "2 days, 22:14:35", "gpu_mem": "7.11 GB", "iter": "10/62", "loss": 0.035305, "lr": 0.000451, "time_diff": 85.258130, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 17:26:21][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "13/60", "eta": "2 days, 2:11:56", "gpu_mem": "7.11 GB", "iter": "20/62", "loss": 0.137092, "lr": 0.000450, "time_diff": 61.135359, "top1_err": 12.500000, "top3_err": 0.000000}
+[04/26 17:40:52][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "13/60", "eta": "2 days, 0:41:40", "gpu_mem": "7.11 GB", "iter": "30/62", "loss": 0.023111, "lr": 0.000449, "time_diff": 59.504633, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 17:52:40][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "13/60", "eta": "2 days, 8:05:12", "gpu_mem": "7.11 GB", "iter": "40/62", "loss": 0.057107, "lr": 0.000447, "time_diff": 68.771271, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 18:05:12][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "13/60", "eta": "1 day, 20:17:58", "gpu_mem": "7.11 GB", "iter": "50/62", "loss": 0.092779, "lr": 0.000446, "time_diff": 54.503776, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 18:19:24][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "13/60", "eta": "2 days, 7:42:21", "gpu_mem": "7.11 GB", "iter": "60/62", "loss": 0.026053, "lr": 0.000445, "time_diff": 68.772843, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 18:21:51][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "23.61/219.90 GB", "_type": "train_epoch", "epoch": "13/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.113159, "lr": 0.000444, "time_diff": 0.000252, "top1_err": 4.637097, "top3_err": 0.000000}
+[04/26 18:34:23][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "14/60", "eta": "3 days, 3:54:27", "gpu_mem": "7.11 GB", "iter": "10/62", "loss": 0.015404, "lr": 0.000443, "time_diff": 94.100300, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 18:46:09][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "14/60", "eta": "3 days, 13:57:07", "gpu_mem": "7.11 GB", "iter": "20/62", "loss": 0.041953, "lr": 0.000442, "time_diff": 106.920495, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 18:58:00][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "14/60", "eta": "2 days, 15:34:23", "gpu_mem": "7.11 GB", "iter": "30/62", "loss": 0.028459, "lr": 0.000440, "time_diff": 79.356437, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 19:12:38][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "14/60", "eta": "2 days, 7:29:28", "gpu_mem": "7.11 GB", "iter": "40/62", "loss": 0.020270, "lr": 0.000439, "time_diff": 69.508754, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 19:25:25][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "14/60", "eta": "2 days, 2:32:17", "gpu_mem": "7.11 GB", "iter": "50/62", "loss": 0.031833, "lr": 0.000438, "time_diff": 63.525753, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 19:38:59][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "14/60", "eta": "1 day, 19:21:44", "gpu_mem": "7.11 GB", "iter": "60/62", "loss": 0.053026, "lr": 0.000436, "time_diff": 54.696783, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 19:41:29][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "23.41/219.90 GB", "_type": "train_epoch", "epoch": "14/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.090096, "lr": 0.000436, "time_diff": 0.000162, "top1_err": 3.024194, "top3_err": 0.000000}
+[04/26 19:54:03][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "15/60", "eta": "2 days, 10:34:17", "gpu_mem": "7.11 GB", "iter": "10/62", "loss": 0.024812, "lr": 0.000435, "time_diff": 74.193214, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 20:05:41][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "15/60", "eta": "2 days, 3:41:45", "gpu_mem": "7.11 GB", "iter": "20/62", "loss": 0.028461, "lr": 0.000433, "time_diff": 65.715106, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 20:18:16][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "15/60", "eta": "3 days, 3:05:38", "gpu_mem": "7.11 GB", "iter": "30/62", "loss": 0.044201, "lr": 0.000432, "time_diff": 95.796946, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 20:31:21][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "15/60", "eta": "2 days, 3:40:16", "gpu_mem": "7.11 GB", "iter": "40/62", "loss": 0.054952, "lr": 0.000430, "time_diff": 66.150792, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 20:45:56][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "15/60", "eta": "2 days, 10:28:17", "gpu_mem": "7.11 GB", "iter": "50/62", "loss": 0.025813, "lr": 0.000429, "time_diff": 75.124085, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 20:58:42][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "15/60", "eta": "2 days, 11:20:42", "gpu_mem": "7.11 GB", "iter": "60/62", "loss": 0.025035, "lr": 0.000427, "time_diff": 76.519612, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 21:01:14][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "23.40/219.90 GB", "_type": "train_epoch", "epoch": "15/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.072015, "lr": 0.000427, "time_diff": 0.000128, "top1_err": 2.016129, "top3_err": 0.000000}
+[04/26 21:13:20][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "16/60", "eta": "1 day, 18:34:14", "gpu_mem": "7.11 GB", "iter": "10/62", "loss": 0.054582, "lr": 0.000425, "time_diff": 55.127546, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 21:25:14][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "16/60", "eta": "2 days, 11:08:26", "gpu_mem": "7.11 GB", "iter": "20/62", "loss": 0.098280, "lr": 0.000424, "time_diff": 76.861645, "top1_err": 6.250000, "top3_err": 0.000000}
+[04/26 21:37:33][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "16/60", "eta": "2 days, 10:03:51", "gpu_mem": "7.11 GB", "iter": "30/62", "loss": 0.047427, "lr": 0.000422, "time_diff": 75.735902, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 21:49:39][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "16/60", "eta": "1 day, 23:34:53", "gpu_mem": "7.11 GB", "iter": "40/62", "loss": 0.086999, "lr": 0.000421, "time_diff": 62.288629, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 22:01:41][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "16/60", "eta": "2 days, 0:20:08", "gpu_mem": "7.11 GB", "iter": "50/62", "loss": 0.082414, "lr": 0.000419, "time_diff": 63.506637, "top1_err": 6.250000, "top3_err": 0.000000}
+[04/26 22:15:21][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "16/60", "eta": "2 days, 15:32:04", "gpu_mem": "7.11 GB", "iter": "60/62", "loss": 0.041468, "lr": 0.000418, "time_diff": 83.781934, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 22:20:25][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "23.56/219.90 GB", "_type": "train_epoch", "epoch": "16/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.129517, "lr": 0.000417, "time_diff": 0.000175, "top1_err": 4.838710, "top3_err": 0.000000}
+[04/26 22:31:50][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "17/60", "eta": "2 days, 4:14:46", "gpu_mem": "7.11 GB", "iter": "10/62", "loss": 0.054338, "lr": 0.000416, "time_diff": 69.200354, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 22:45:59][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "17/60", "eta": "3 days, 5:33:50", "gpu_mem": "7.11 GB", "iter": "20/62", "loss": 0.053603, "lr": 0.000414, "time_diff": 103.113184, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 22:59:14][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "17/60", "eta": "2 days, 5:30:50", "gpu_mem": "7.11 GB", "iter": "30/62", "loss": 0.030948, "lr": 0.000413, "time_diff": 71.404922, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 23:11:12][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "17/60", "eta": "3 days, 1:51:53", "gpu_mem": "7.11 GB", "iter": "40/62", "loss": 0.042365, "lr": 0.000411, "time_diff": 98.926319, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 23:25:00][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "17/60", "eta": "2 days, 6:54:58", "gpu_mem": "7.11 GB", "iter": "50/62", "loss": 0.026453, "lr": 0.000409, "time_diff": 73.823110, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 23:36:41][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "17/60", "eta": "2 days, 7:54:33", "gpu_mem": "7.11 GB", "iter": "60/62", "loss": 0.017774, "lr": 0.000408, "time_diff": 75.439656, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/26 23:39:28][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "23.39/219.90 GB", "_type": "train_epoch", "epoch": "17/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.060042, "lr": 0.000407, "time_diff": 0.000079, "top1_err": 1.209677, "top3_err": 0.000000}
+[04/26 23:54:08][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "18/60", "eta": "2 days, 6:36:17", "gpu_mem": "7.11 GB", "iter": "10/62", "loss": 0.033405, "lr": 0.000406, "time_diff": 74.012438, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 00:06:21][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "18/60", "eta": "1 day, 17:02:01", "gpu_mem": "7.11 GB", "iter": "20/62", "loss": 0.019756, "lr": 0.000404, "time_diff": 55.828091, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 00:19:17][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "18/60", "eta": "2 days, 21:32:23", "gpu_mem": "7.11 GB", "iter": "30/62", "loss": 0.015868, "lr": 0.000403, "time_diff": 94.970842, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 00:31:07][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "18/60", "eta": "2 days, 0:08:18", "gpu_mem": "7.11 GB", "iter": "40/62", "loss": 0.055259, "lr": 0.000401, "time_diff": 65.993217, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 00:44:08][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "18/60", "eta": "2 days, 2:29:29", "gpu_mem": "7.11 GB", "iter": "50/62", "loss": 0.107151, "lr": 0.000399, "time_diff": 69.483892, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 00:56:24][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "18/60", "eta": "2 days, 6:03:53", "gpu_mem": "7.11 GB", "iter": "60/62", "loss": 0.027574, "lr": 0.000397, "time_diff": 74.686634, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 00:59:02][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "23.39/219.90 GB", "_type": "train_epoch", "epoch": "18/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.076849, "lr": 0.000397, "time_diff": 0.000114, "top1_err": 2.822581, "top3_err": 0.000000}
+[04/27 01:11:15][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "19/60", "eta": "2 days, 10:12:34", "gpu_mem": "7.11 GB", "iter": "10/62", "loss": 0.054741, "lr": 0.000395, "time_diff": 80.784261, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 01:27:09][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "19/60", "eta": "2 days, 23:37:50", "gpu_mem": "7.11 GB", "iter": "20/62", "loss": 0.053254, "lr": 0.000394, "time_diff": 99.794979, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 01:39:00][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "19/60", "eta": "1 day, 14:11:23", "gpu_mem": "7.11 GB", "iter": "30/62", "loss": 0.026433, "lr": 0.000392, "time_diff": 53.412301, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 01:50:43][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "19/60", "eta": "2 days, 0:19:09", "gpu_mem": "7.11 GB", "iter": "40/62", "loss": 0.036821, "lr": 0.000390, "time_diff": 67.843024, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 02:03:32][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "19/60", "eta": "2 days, 7:59:10", "gpu_mem": "7.11 GB", "iter": "50/62", "loss": 0.037256, "lr": 0.000388, "time_diff": 78.915676, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 02:16:14][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "19/60", "eta": "2 days, 13:19:50", "gpu_mem": "7.11 GB", "iter": "60/62", "loss": 0.026398, "lr": 0.000387, "time_diff": 86.788738, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 02:18:28][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "23.20/219.90 GB", "_type": "train_epoch", "epoch": "19/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.115463, "lr": 0.000386, "time_diff": 0.000094, "top1_err": 3.830645, "top3_err": 0.000000}
+[04/27 02:31:18][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "20/60", "eta": "2 days, 7:09:26", "gpu_mem": "7.11 GB", "iter": "10/62", "loss": 0.054441, "lr": 0.000385, "time_diff": 78.422671, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 02:43:26][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "20/60", "eta": "2 days, 8:33:39", "gpu_mem": "7.11 GB", "iter": "20/62", "loss": 0.047356, "lr": 0.000383, "time_diff": 80.737197, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 02:58:02][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "20/60", "eta": "2 days, 20:06:32", "gpu_mem": "7.11 GB", "iter": "30/62", "loss": 0.032282, "lr": 0.000381, "time_diff": 97.608587, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 03:09:57][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "20/60", "eta": "1 day, 23:23:58", "gpu_mem": "7.11 GB", "iter": "40/62", "loss": 0.024067, "lr": 0.000379, "time_diff": 68.200723, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 03:22:28][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "20/60", "eta": "2 days, 4:38:32", "gpu_mem": "7.11 GB", "iter": "50/62", "loss": 0.019786, "lr": 0.000377, "time_diff": 76.048384, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 03:35:08][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "20/60", "eta": "1 day, 16:22:11", "gpu_mem": "7.11 GB", "iter": "60/62", "loss": 0.061739, "lr": 0.000376, "time_diff": 58.554177, "top1_err": 0.000000, "top3_err": 0.000000}
+[04/27 03:37:47][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "22.83/219.90 GB", "_type": "train_epoch", "epoch": "20/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.075849, "lr": 0.000375, "time_diff": 0.000313, "top1_err": 3.225806, "top3_err": 0.000000}
+Traceback (most recent call last):
+  File "tools/run_net.py", line 45, in <module>
+    main()
+  File "tools/run_net.py", line 26, in main
+    launch_job(cfg=cfg, init_method=args.init_method, func=train)
+  File "/public/home/zhouz/perl5/HAR/slowfast/utils/misc.py", line 324, in launch_job
+    func(cfg=cfg)
+  File "/public/home/zhouz/perl5/HAR/tools/train_net.py", line 543, in train
+    eval_epoch(val_loader, model, val_meter, cur_epoch, cfg, writer)
+  File "/public/home/zhouz/.conda/envs/slowfast/lib/python3.6/site-packages/torch/autograd/grad_mode.py", line 26, in decorate_context
+    return func(*args, **kwargs)
+  File "/public/home/zhouz/perl5/HAR/tools/train_net.py", line 278, in eval_epoch
+    num_topks_correct = metrics.topks_correct(preds, labels, (1, 3))
+  File "/public/home/zhouz/perl5/HAR/slowfast/utils/metrics.py", line 30, in topks_correct
+    preds, max(ks), dim=1, largest=True, sorted=True
+RuntimeError: invalid argument 5: k not in range for dimension at /pytorch/aten/src/THC/generic/THCTensorTopK.cu:26
+End slurm job at Thu Apr 27 03:37:51 CST 2023

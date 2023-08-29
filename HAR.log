@@ -1,0 +1,964 @@
+Start slurm job at Mon Nov 21 15:49:42 CST 2022
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+[11/21 15:50:11][INFO] train_net:  444: Train with config:
+[11/21 15:50:11][INFO] train_net:  445: {'AVA': {'ANNOTATION_DIR': '/mnt/vol/gfsai-flash3-east/ai-group/users/haoqifan/ava/frame_list/',
+         'BGR': False,
+         'DETECTION_SCORE_THRESH': 0.9,
+         'EXCLUSION_FILE': 'ava_val_excluded_timestamps_v2.2.csv',
+         'FRAME_DIR': '/mnt/fair-flash3-east/ava_trainval_frames.img/',
+         'FRAME_LIST_DIR': '/mnt/vol/gfsai-flash3-east/ai-group/users/haoqifan/ava/frame_list/',
+         'FULL_TEST_ON_VAL': False,
+         'GROUNDTRUTH_FILE': 'ava_val_v2.2.csv',
+         'IMG_PROC_BACKEND': 'cv2',
+         'LABEL_MAP_FILE': 'ava_action_list_v2.2_for_activitynet_2019.pbtxt',
+         'TEST_FORCE_FLIP': False,
+         'TEST_LISTS': ['val.csv'],
+         'TEST_PREDICT_BOX_LISTS': ['ava_val_predicted_boxes.csv'],
+         'TRAIN_GT_BOX_LISTS': ['ava_train_v2.2.csv'],
+         'TRAIN_LISTS': ['train.csv'],
+         'TRAIN_PCA_EIGVAL': [0.225, 0.224, 0.229],
+         'TRAIN_PCA_EIGVEC': [[-0.5675, 0.7192, 0.4009],
+                              [-0.5808, -0.0045, -0.814],
+                              [-0.5836, -0.6948, 0.4203]],
+         'TRAIN_PCA_JITTER_ONLY': True,
+         'TRAIN_PREDICT_BOX_LISTS': [],
+         'TRAIN_USE_COLOR_AUGMENTATION': False},
+ 'BENCHMARK': CfgNode({'NUM_EPOCHS': 5, 'LOG_PERIOD': 100, 'SHUFFLE': True}),
+ 'BN': {'NORM_TYPE': 'batchnorm',
+        'NUM_BATCHES_PRECISE': 200,
+        'NUM_SPLITS': 1,
+        'NUM_SYNC_DEVICES': 1,
+        'USE_PRECISE_STATS': True,
+        'WEIGHT_DECAY': 0.0},
+ 'DATA': {'CROP_SIZE': 224,
+          'DECODING_BACKEND': 'pyav',
+          'ENSEMBLE_METHOD': 'sum',
+          'INPUT_CHANNEL_NUM': [3],
+          'INV_UNIFORM_SAMPLE': False,
+          'MEAN': [0.45, 0.45, 0.45],
+          'MULTI_LABEL': False,
+          'NUM_FRAMES': 8,
+          'OLD_PATH_TO_DATA_DIR': '',
+          'PATH_LABEL_SEPARATOR': ' ',
+          'PATH_PREFIX': '',
+          'PATH_TO_DATA_DIR': '/public/home/zhouz/perl5/dataset/crime/list/',
+          'RANDOM_FLIP': True,
+          'REVERSE_INPUT_CHANNEL': False,
+          'SAMPLING_RATE': 8,
+          'STD': [0.225, 0.225, 0.225],
+          'TARGET_FPS': 30,
+          'TEST_CROP_SIZE': 224,
+          'TRAIN_CROP_SIZE': 224,
+          'TRAIN_JITTER_SCALES': [256, 320]},
+ 'DATA_LOADER': {'ENABLE_MULTI_THREAD_DECODE': False,
+                 'NUM_WORKERS': 0,
+                 'PIN_MEMORY': False},
+ 'DEMO': {'BUFFER_SIZE': 0,
+          'CLIP_VIS_SIZE': 10,
+          'COMMON_CLASS_NAMES': ['watch (a person)',
+                                 'talk to (e.g., self, a person, a group)',
+                                 'listen to (a person)',
+                                 'touch (an object)',
+                                 'carry/hold (an object)',
+                                 'walk',
+                                 'sit',
+                                 'lie/sleep',
+                                 'bend/bow (at the waist)'],
+          'COMMON_CLASS_THRES': 0.7,
+          'DETECTRON2_CFG': 'COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml',
+          'DETECTRON2_THRESH': 0.9,
+          'DETECTRON2_WEIGHTS': 'detectron2://COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl',
+          'DISPLAY_HEIGHT': 0,
+          'DISPLAY_WIDTH': 0,
+          'ENABLE': False,
+          'FPS': 30,
+          'GT_BOXES': '',
+          'INPUT_FORMAT': 'BGR',
+          'INPUT_VIDEO': '',
+          'LABEL_FILE_PATH': '',
+          'NUM_CLIPS_SKIP': 0,
+          'NUM_VIS_INSTANCES': 2,
+          'OUTPUT_FILE': '',
+          'OUTPUT_FPS': -1,
+          'PREDS_BOXES': '',
+          'SLOWMO': 1,
+          'STARTING_SECOND': 900,
+          'THREAD_ENABLE': False,
+          'UNCOMMON_CLASS_THRES': 0.3,
+          'VIS_MODE': 'thres',
+          'WEBCAM': -1},
+ 'DETECTION': {'ALIGNED': True,
+               'ENABLE': False,
+               'ROI_XFORM_RESOLUTION': 7,
+               'SPATIAL_SCALE_FACTOR': 16},
+ 'DIST_BACKEND': 'nccl',
+ 'LOG_MODEL_INFO': True,
+ 'LOG_PERIOD': 10,
+ 'MODEL': {'ARCH': 'slow',
+           'DROPOUT_RATE': 0.5,
+           'FC_INIT_STD': 0.01,
+           'HEAD_ACT': 'softmax',
+           'LOSS_FUNC': 'cross_entropy',
+           'MODEL_NAME': 'ResNet',
+           'MULTI_PATHWAY_ARCH': ['slowfast'],
+           'NUM_CLASSES': 3,
+           'OLD_MODEL_NAME': 'OLD_ResNet',
+           'OLD_NUM_CLASSES': 3,
+           'SINGLE_PATHWAY_ARCH': ['c2d', 'i3d', 'slow']},
+ 'MULTIGRID': {'BN_BASE_SIZE': 8,
+               'DEFAULT_B': 0,
+               'DEFAULT_S': 0,
+               'DEFAULT_T': 0,
+               'EPOCH_FACTOR': 1.5,
+               'EVAL_FREQ': 3,
+               'LONG_CYCLE': False,
+               'LONG_CYCLE_FACTORS': [(0.25, 0.7071067811865476),
+                                      (0.5, 0.7071067811865476),
+                                      (0.5, 1),
+                                      (1, 1)],
+               'LONG_CYCLE_SAMPLING_RATE': 0,
+               'SHORT_CYCLE': False,
+               'SHORT_CYCLE_FACTORS': [0.5, 0.7071067811865476]},
+ 'NONLOCAL': {'GROUP': [[1], [1], [1], [1]],
+              'INSTANTIATION': 'dot_product',
+              'LOCATION': [[[]], [[]], [[]], [[]]],
+              'POOL': [[[1, 2, 2], [1, 2, 2]],
+                       [[1, 2, 2], [1, 2, 2]],
+                       [[1, 2, 2], [1, 2, 2]],
+                       [[1, 2, 2], [1, 2, 2]]]},
+ 'NUM_GPUS': 1,
+ 'NUM_SHARDS': 1,
+ 'OUTPUT_DIR': './HAV',
+ 'RESNET': {'DEPTH': 50,
+            'INPLACE_RELU': True,
+            'NUM_BLOCK_TEMP_KERNEL': [[3], [4], [6], [3]],
+            'NUM_GROUPS': 1,
+            'SPATIAL_DILATIONS': [[1], [1], [1], [1]],
+            'SPATIAL_STRIDES': [[1], [2], [2], [2]],
+            'STRIDE_1X1': False,
+            'TRANS_FUNC': 'bottleneck_transform',
+            'WIDTH_PER_GROUP': 64,
+            'ZERO_INIT_FINAL_BN': True},
+ 'RNG_SEED': 0,
+ 'SHARD_ID': 0,
+ 'SLOWFAST': {'ALPHA': 8,
+              'BETA_INV': 8,
+              'FUSION_CONV_CHANNEL_RATIO': 2,
+              'FUSION_KERNEL_SZ': 5},
+ 'SOLVER': {'BASE_LR': 0.0005,
+            'DAMPENING': 0.0,
+            'GAMMA': 0.1,
+            'LRS': [],
+            'LR_POLICY': 'cosine',
+            'MAX_EPOCH': 60,
+            'MOMENTUM': 0.9,
+            'NESTEROV': True,
+            'OPTIMIZING_METHOD': 'sgd',
+            'STEPS': [],
+            'STEP_SIZE': 1,
+            'WARMUP_EPOCHS': 0.0,
+            'WARMUP_FACTOR': 0.1,
+            'WARMUP_START_LR': 0.01,
+            'WEIGHT_DECAY': 1e-06},
+ 'TENSORBOARD': {'CATEGORIES_PATH': '',
+                 'CLASS_NAMES_PATH': '',
+                 'CONFUSION_MATRIX': {'ENABLE': False,
+                                      'FIGSIZE': [8, 8],
+                                      'SUBSET_PATH': ''},
+                 'ENABLE': False,
+                 'HISTOGRAM': {'ENABLE': False,
+                               'FIGSIZE': [8, 8],
+                               'SUBSET_PATH': '',
+                               'TOPK': 10},
+                 'LOG_DIR': '',
+                 'MODEL_VIS': {'ACTIVATIONS': False,
+                               'COLORMAP': 'Pastel2',
+                               'ENABLE': False,
+                               'GRAD_CAM': {'COLORMAP': 'viridis',
+                                            'ENABLE': True,
+                                            'LAYER_LIST': [],
+                                            'USE_TRUE_LABEL': False},
+                               'INPUT_VIDEO': False,
+                               'LAYER_LIST': [],
+                               'MODEL_WEIGHTS': False,
+                               'TOPK_PREDS': 1},
+                 'PREDICTIONS_PATH': '',
+                 'WRONG_PRED_VIS': {'ENABLE': False,
+                                    'SUBSET_PATH': '',
+                                    'TAG': 'Incorrectly classified videos.'}},
+ 'TEST': {'BATCH_SIZE': 32,
+          'CHECKPOINT_FILE_PATH': '',
+          'CHECKPOINT_TYPE': 'pytorch',
+          'DATASET': 'kinetics',
+          'ENABLE': True,
+          'NUM_ENSEMBLE_VIEWS': 10,
+          'NUM_SPATIAL_CROPS': 3,
+          'OLD_DATASET': 'old_kinetics',
+          'SAVE_RESULTS_PATH': ''},
+ 'TRAIN': {'AUTO_RESUME': True,
+           'BATCH_SIZE': 8,
+           'CHECKPOINT_FILE_PATH': '/public/home/zhouz/perl5/Drone-ICIL/pretrained/SLOWONLY_8x8_R50.pkl',
+           'CHECKPOINT_INFLATE': True,
+           'CHECKPOINT_PERIOD': 1,
+           'CHECKPOINT_TYPE': 'caffe2',
+           'DATASET': 'kinetics',
+           'ENABLE': True,
+           'EVAL_PERIOD': 10,
+           'OLD_DATASET': 'Oldkinetics'}}
+[11/21 15:50:18][INFO] slowfast.utils.checkpoint:  436: Load from last checkpoint, ./HAV/checkpoints/checkpoint_epoch_00031.pyth.
+[11/21 15:50:22][INFO] slowfast.datasets.kinetics:   73: Constructing Kinetics train...
+[11/21 15:50:22][INFO] slowfast.datasets.kinetics:  133: Constructing kinetics dataloader (size: 659) from /public/home/zhouz/perl5/dataset/crime/list/train.csv
+[11/21 15:50:22][INFO] slowfast.datasets.kinetics:   73: Constructing Kinetics val...
+[11/21 15:50:22][INFO] slowfast.datasets.kinetics:  133: Constructing kinetics dataloader (size: 273) from /public/home/zhouz/perl5/dataset/crime/list/val.csv
+[11/21 15:50:22][INFO] slowfast.datasets.kinetics:   73: Constructing Kinetics train...
+[11/21 15:50:22][INFO] slowfast.datasets.kinetics:  133: Constructing kinetics dataloader (size: 659) from /public/home/zhouz/perl5/dataset/crime/list/train.csv
+[11/21 15:50:22][INFO] train_net:  489: Start epoch: 32
+[11/21 16:02:51][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "32/60", "eta": "1 day, 13:17:24", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.179959, "lr": 0.000235, "time_diff": 56.690944, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/21 16:19:16][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "32/60", "eta": "2 days, 3:47:00", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.174913, "lr": 0.000234, "time_diff": 79.058557, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 16:32:02][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "32/60", "eta": "2 days, 11:18:32", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.205996, "lr": 0.000232, "time_diff": 90.933725, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 16:45:52][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "32/60", "eta": "2 days, 18:17:45", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.194375, "lr": 0.000231, "time_diff": 102.081171, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 17:00:17][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "32/60", "eta": "1 day, 23:07:50", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.241279, "lr": 0.000229, "time_diff": 72.882667, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 17:13:21][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "32/60", "eta": "2 days, 6:38:06", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.177291, "lr": 0.000228, "time_diff": 84.851927, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 17:26:48][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "32/60", "eta": "2 days, 6:43:47", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.173220, "lr": 0.000226, "time_diff": 85.367082, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/21 17:39:41][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "32/60", "eta": "2 days, 1:18:25", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.160878, "lr": 0.000224, "time_diff": 77.243557, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 17:42:26][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "15.19/219.90 GB", "_type": "train_epoch", "epoch": "32/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.201944, "lr": 0.000224, "time_diff": 0.000085, "top1_err": 6.859756, "top3_err": 0.000000}
+[11/21 17:56:18][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "33/60", "eta": "1 day, 23:33:46", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.225148, "lr": 0.000222, "time_diff": 74.902099, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 18:12:38][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "33/60", "eta": "3 days, 9:54:20", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.220781, "lr": 0.000221, "time_diff": 129.552240, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 18:26:09][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "33/60", "eta": "2 days, 5:22:20", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.142045, "lr": 0.000219, "time_diff": 84.792893, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/21 18:39:44][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "33/60", "eta": "2 days, 1:34:18", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.189698, "lr": 0.000218, "time_diff": 79.104148, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/21 18:53:51][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "33/60", "eta": "3 days, 0:41:10", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.163409, "lr": 0.000216, "time_diff": 116.505010, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/21 19:10:02][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "33/60", "eta": "2 days, 16:18:05", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.153815, "lr": 0.000215, "time_diff": 103.526808, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 19:26:19][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "33/60", "eta": "2 days, 4:44:23", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.268563, "lr": 0.000213, "time_diff": 85.293440, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 19:44:11][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "33/60", "eta": "2 days, 7:46:59", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.170960, "lr": 0.000211, "time_diff": 90.622666, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 19:47:08][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "16.84/219.90 GB", "_type": "train_epoch", "epoch": "33/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.234365, "lr": 0.000211, "time_diff": 0.000173, "top1_err": 8.079268, "top3_err": 0.000000}
+[11/21 20:03:39][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "34/60", "eta": "1 day, 16:30:25", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.234073, "lr": 0.000209, "time_diff": 66.164028, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/21 20:20:06][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "34/60", "eta": "2 days, 10:00:06", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.276722, "lr": 0.000208, "time_diff": 95.171420, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 20:33:34][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "34/60", "eta": "2 days, 11:23:01", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.200653, "lr": 0.000206, "time_diff": 97.885245, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 20:45:49][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "34/60", "eta": "1 day, 18:23:31", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.203271, "lr": 0.000205, "time_diff": 70.198659, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 20:58:39][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "34/60", "eta": "2 days, 2:00:26", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.177781, "lr": 0.000203, "time_diff": 83.191366, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/21 21:15:04][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "34/60", "eta": "1 day, 18:59:12", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.128338, "lr": 0.000202, "time_diff": 71.844197, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 21:28:58][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "34/60", "eta": "2 days, 1:00:04", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.241725, "lr": 0.000200, "time_diff": 82.278213, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 21:41:42][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "34/60", "eta": "1 day, 11:45:55", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.165464, "lr": 0.000198, "time_diff": 60.335205, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 21:44:25][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "15.04/219.90 GB", "_type": "train_epoch", "epoch": "34/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.234261, "lr": 0.000198, "time_diff": 0.000168, "top1_err": 8.841463, "top3_err": 0.000000}
+[11/21 21:57:40][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "35/60", "eta": "2 days, 5:26:53", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.199423, "lr": 0.000197, "time_diff": 90.675575, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 22:10:07][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "35/60", "eta": "1 day, 21:53:47", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.243921, "lr": 0.000195, "time_diff": 78.232792, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 22:24:03][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "35/60", "eta": "1 day, 21:16:48", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.136910, "lr": 0.000194, "time_diff": 77.549374, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 22:38:26][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "35/60", "eta": "2 days, 8:04:59", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.246395, "lr": 0.000192, "time_diff": 96.510270, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 22:51:30][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "35/60", "eta": "2 days, 5:34:46", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.216310, "lr": 0.000190, "time_diff": 92.644635, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 23:04:32][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "35/60", "eta": "2 days, 12:54:16", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.153074, "lr": 0.000189, "time_diff": 105.818816, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 23:16:40][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "35/60", "eta": "1 day, 22:44:02", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.193817, "lr": 0.000187, "time_diff": 81.592093, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/21 23:33:43][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "35/60", "eta": "1 day, 14:12:33", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.241409, "lr": 0.000186, "time_diff": 67.033821, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/21 23:36:16][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "15.03/219.90 GB", "_type": "train_epoch", "epoch": "35/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.237688, "lr": 0.000185, "time_diff": 0.000138, "top1_err": 8.536585, "top3_err": 0.000000}
+[11/21 23:49:19][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "36/60", "eta": "1 day, 19:20:12", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.221035, "lr": 0.000184, "time_diff": 76.476879, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 00:02:25][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "36/60", "eta": "1 day, 12:57:16", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.171071, "lr": 0.000182, "time_diff": 65.535085, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 00:14:47][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "36/60", "eta": "1 day, 18:16:42", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.169025, "lr": 0.000181, "time_diff": 75.347732, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 00:28:46][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "36/60", "eta": "2 days, 0:35:02", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.175505, "lr": 0.000179, "time_diff": 87.016089, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 00:44:04][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "36/60", "eta": "1 day, 22:35:16", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.204129, "lr": 0.000178, "time_diff": 83.858205, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 00:56:56][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "36/60", "eta": "1 day, 14:29:58", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.163556, "lr": 0.000176, "time_diff": 69.647404, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 01:09:59][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "36/60", "eta": "2 days, 0:59:03", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.157207, "lr": 0.000175, "time_diff": 89.062606, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 01:25:09][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "36/60", "eta": "4 days, 21:31:06", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.278798, "lr": 0.000173, "time_diff": 214.754521, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 01:28:16][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "14.77/219.90 GB", "_type": "train_epoch", "epoch": "36/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.192373, "lr": 0.000173, "time_diff": 0.000186, "top1_err": 7.469512, "top3_err": 0.000000}
+[11/22 01:41:38][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "37/60", "eta": "2 days, 3:54:09", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.313358, "lr": 0.000171, "time_diff": 95.428804, "top1_err": 18.750000, "top3_err": 0.000000}
+[11/22 01:57:47][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "37/60", "eta": "1 day, 14:48:23", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.139794, "lr": 0.000170, "time_diff": 71.716148, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 02:10:52][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "37/60", "eta": "1 day, 21:32:17", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.175449, "lr": 0.000168, "time_diff": 84.591312, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 02:24:26][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "37/60", "eta": "1 day, 7:04:09", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.196936, "lr": 0.000167, "time_diff": 58.013270, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 02:38:17][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "37/60", "eta": "1 day, 4:24:15", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.220799, "lr": 0.000165, "time_diff": 53.313453, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 02:50:49][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "37/60", "eta": "1 day, 13:07:33", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.130247, "lr": 0.000164, "time_diff": 70.048998, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 03:04:59][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "37/60", "eta": "1 day, 15:13:46", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.272388, "lr": 0.000162, "time_diff": 74.407993, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 03:17:10][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "37/60", "eta": "1 day, 17:43:37", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.214865, "lr": 0.000161, "time_diff": 79.564474, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 03:20:12][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "15.17/219.90 GB", "_type": "train_epoch", "epoch": "37/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.219474, "lr": 0.000161, "time_diff": 0.000196, "top1_err": 9.146341, "top3_err": 0.000000}
+[11/22 03:33:21][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "38/60", "eta": "1 day, 12:10:25", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.122536, "lr": 0.000159, "time_diff": 69.416538, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 03:47:21][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "38/60", "eta": "1 day, 23:35:25", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.192511, "lr": 0.000158, "time_diff": 91.814456, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 04:01:00][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "38/60", "eta": "2 days, 2:11:51", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.187331, "lr": 0.000156, "time_diff": 97.366142, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 04:17:26][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "38/60", "eta": "1 day, 14:37:20", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.251527, "lr": 0.000155, "time_diff": 75.319919, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 04:29:58][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "38/60", "eta": "1 day, 21:56:59", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.181155, "lr": 0.000153, "time_diff": 90.097985, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 04:44:31][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "38/60", "eta": "1 day, 23:17:03", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.166831, "lr": 0.000152, "time_diff": 93.221938, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 04:57:10][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "38/60", "eta": "1 day, 11:10:37", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.140548, "lr": 0.000150, "time_diff": 69.734215, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 05:09:42][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "38/60", "eta": "1 day, 14:25:11", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.223361, "lr": 0.000149, "time_diff": 76.584602, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 05:12:15][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "15.05/219.90 GB", "_type": "train_epoch", "epoch": "38/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.217682, "lr": 0.000148, "time_diff": 0.000155, "top1_err": 8.993902, "top3_err": 0.000000}
+[11/22 05:25:26][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "39/60", "eta": "2 days, 19:26:25", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.133408, "lr": 0.000147, "time_diff": 135.332090, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 05:38:38][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "39/60", "eta": "2 days, 5:59:21", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.193247, "lr": 0.000146, "time_diff": 108.947013, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 05:51:20][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "39/60", "eta": "1 day, 13:49:13", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.254098, "lr": 0.000144, "time_diff": 76.749468, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 06:06:10][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "39/60", "eta": "1 day, 11:12:45", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.140757, "lr": 0.000143, "time_diff": 71.862631, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 06:18:58][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "39/60", "eta": "2 days, 3:16:03", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.170037, "lr": 0.000141, "time_diff": 105.224232, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 06:32:26][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "39/60", "eta": "1 day, 8:22:45", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.267781, "lr": 0.000140, "time_diff": 66.837971, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 06:46:44][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "39/60", "eta": "1 day, 6:09:48", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.157634, "lr": 0.000138, "time_diff": 62.623290, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 07:00:43][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "39/60", "eta": "1 day, 18:32:31", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.108314, "lr": 0.000137, "time_diff": 88.835243, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 07:04:08][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "14.05/219.90 GB", "_type": "train_epoch", "epoch": "39/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.214418, "lr": 0.000137, "time_diff": 0.000175, "top1_err": 7.926829, "top3_err": 0.000000}
+[11/22 07:17:22][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "40/60", "eta": "1 day, 11:08:25", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.128345, "lr": 0.000135, "time_diff": 73.893478, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 07:30:00][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "40/60", "eta": "1 day, 5:30:57", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.183115, "lr": 0.000134, "time_diff": 62.431210, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 07:43:08][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "40/60", "eta": "1 day, 1:13:22", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.269784, "lr": 0.000132, "time_diff": 53.665792, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 07:57:56][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "40/60", "eta": "1 day, 18:25:04", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.160681, "lr": 0.000131, "time_diff": 90.787370, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 08:08:44][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "40/60", "eta": "1 day, 7:18:04", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.115605, "lr": 0.000130, "time_diff": 67.395260, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 08:22:55][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "40/60", "eta": "1 day, 15:35:45", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.208230, "lr": 0.000128, "time_diff": 85.767187, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 08:37:31][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "40/60", "eta": "1 day, 7:41:28", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.258906, "lr": 0.000127, "time_diff": 69.061110, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 08:52:48][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "40/60", "eta": "1 day, 7:37:08", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.158378, "lr": 0.000125, "time_diff": 69.322945, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 08:55:48][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "15.39/219.90 GB", "_type": "train_epoch", "epoch": "40/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.196778, "lr": 0.000125, "time_diff": 0.000263, "top1_err": 6.859756, "top3_err": 0.000000}
+[11/22 08:56:01][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "val_iter", "epoch": "40/60", "eta": "0:00:26", "gpu_mem": "7.11 GB", "iter": "10/35", "time_diff": 1.052014, "top1_err": 75.000000, "top3_err": 0.000000}
+[11/22 08:56:42][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "val_iter", "epoch": "40/60", "eta": "0:04:14", "gpu_mem": "7.11 GB", "iter": "20/35", "time_diff": 16.979658, "top1_err": 62.500000, "top3_err": 0.000000}
+[11/22 08:58:09][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "val_iter", "epoch": "40/60", "eta": "0:01:25", "gpu_mem": "7.11 GB", "iter": "30/35", "time_diff": 17.000533, "top1_err": 87.500000, "top3_err": 0.000000}
+[11/22 08:59:19][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "15.26/219.90 GB", "_type": "val_epoch", "epoch": "40/60", "gpu_mem": "7.11 GB", "min_top1_err": 72.161172, "min_top3_err": 0.000000, "time_diff": 0.000044, "top1_err": 72.161172, "top3_err": 0.000000}
+[11/22 09:12:33][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "41/60", "eta": "1 day, 16:57:27", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.139103, "lr": 0.000124, "time_diff": 90.458616, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 09:28:07][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "41/60", "eta": "1 day, 12:09:40", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.239597, "lr": 0.000122, "time_diff": 80.358298, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 09:42:23][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "41/60", "eta": "1 day, 16:40:30", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.232521, "lr": 0.000121, "time_diff": 90.950673, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 09:55:39][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "41/60", "eta": "1 day, 6:49:53", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.203722, "lr": 0.000120, "time_diff": 69.370982, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 10:09:11][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "41/60", "eta": "1 day, 10:33:51", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.131404, "lr": 0.000118, "time_diff": 78.258684, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 10:23:11][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "41/60", "eta": "1 day, 8:40:42", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.356633, "lr": 0.000117, "time_diff": 74.457124, "top1_err": 18.750000, "top3_err": 0.000000}
+[11/22 10:36:18][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "41/60", "eta": "1 day, 4:30:27", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.225354, "lr": 0.000116, "time_diff": 65.367767, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 10:48:34][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "41/60", "eta": "1 day, 10:17:06", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.159612, "lr": 0.000114, "time_diff": 79.119804, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 10:51:05][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "15.21/219.90 GB", "_type": "train_epoch", "epoch": "41/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.266477, "lr": 0.000114, "time_diff": 0.000265, "top1_err": 10.518293, "top3_err": 0.000000}
+[11/22 11:06:58][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "42/60", "eta": "1 day, 0:35:43", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.177467, "lr": 0.000113, "time_diff": 57.198544, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 11:20:27][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "42/60", "eta": "2 days, 9:48:24", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.253487, "lr": 0.000111, "time_diff": 135.308346, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 11:33:20][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "42/60", "eta": "1 day, 16:17:40", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.212699, "lr": 0.000110, "time_diff": 94.935182, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 11:46:14][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "42/60", "eta": "1 day, 12:25:57", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.217808, "lr": 0.000109, "time_diff": 86.401790, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 11:58:39][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "42/60", "eta": "1 day, 0:52:12", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.164906, "lr": 0.000107, "time_diff": 59.371616, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 12:12:18][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "42/60", "eta": "1 day, 3:07:31", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.197208, "lr": 0.000106, "time_diff": 65.187928, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 12:26:08][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "42/60", "eta": "1 day, 11:34:13", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.134780, "lr": 0.000105, "time_diff": 86.057191, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 12:40:19][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "42/60", "eta": "1 day, 19:25:18", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.149479, "lr": 0.000103, "time_diff": 105.763773, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 12:43:00][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "14.98/219.90 GB", "_type": "train_epoch", "epoch": "42/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.221505, "lr": 0.000103, "time_diff": 0.000179, "top1_err": 8.384146, "top3_err": 0.000000}
+[11/22 12:56:58][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "43/60", "eta": "1 day, 13:54:29", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.229032, "lr": 0.000102, "time_diff": 93.089361, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 13:10:38][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "43/60", "eta": "1 day, 11:04:19", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.175696, "lr": 0.000101, "time_diff": 86.716774, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 13:23:59][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "43/60", "eta": "1 day, 11:06:05", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.162691, "lr": 0.000099, "time_diff": 87.390024, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 13:36:15][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "43/60", "eta": "1 day, 9:53:16", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.200822, "lr": 0.000098, "time_diff": 84.955540, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 13:49:08][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "43/60", "eta": "1 day, 16:35:20", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.198917, "lr": 0.000097, "time_diff": 102.468984, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 14:02:46][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "43/60", "eta": "1 day, 21:47:56", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.164802, "lr": 0.000096, "time_diff": 116.438242, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 14:15:43][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "43/60", "eta": "1 day, 10:50:58", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.157235, "lr": 0.000094, "time_diff": 89.231099, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 14:31:20][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "43/60", "eta": "1 day, 7:25:57", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.278613, "lr": 0.000093, "time_diff": 81.058354, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 14:34:13][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "15.54/219.90 GB", "_type": "train_epoch", "epoch": "43/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.264417, "lr": 0.000093, "time_diff": 0.000267, "top1_err": 10.670732, "top3_err": 0.000000}
+[11/22 14:47:33][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "44/60", "eta": "1 day, 3:45:11", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.158528, "lr": 0.000092, "time_diff": 72.190508, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 15:01:42][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "44/60", "eta": "1 day, 17:23:23", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.249156, "lr": 0.000090, "time_diff": 108.444815, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 15:13:48][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "44/60", "eta": "1 day, 3:38:22", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.225727, "lr": 0.000089, "time_diff": 72.948700, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 15:27:20][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "44/60", "eta": "23:52:00", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.142051, "lr": 0.000088, "time_diff": 63.456574, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 15:43:53][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "44/60", "eta": "1 day, 6:14:44", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.243473, "lr": 0.000087, "time_diff": 81.015178, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 16:00:39][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "44/60", "eta": "1 day, 10:45:37", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.241642, "lr": 0.000085, "time_diff": 93.806155, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 16:18:05][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "44/60", "eta": "1 day, 20:10:53", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.203433, "lr": 0.000084, "time_diff": 120.131086, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 16:37:54][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "44/60", "eta": "1 day, 3:03:13", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.239734, "lr": 0.000083, "time_diff": 74.120018, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 16:41:11][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "17.05/219.90 GB", "_type": "train_epoch", "epoch": "44/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.266663, "lr": 0.000083, "time_diff": 0.000142, "top1_err": 11.280488, "top3_err": 0.000000}
+[11/22 16:59:18][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "45/60", "eta": "1 day, 9:54:46", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.311933, "lr": 0.000082, "time_diff": 93.768052, "top1_err": 18.750000, "top3_err": 0.000000}
+[11/22 17:16:28][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "45/60", "eta": "1 day, 12:03:20", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.231673, "lr": 0.000080, "time_diff": 100.464895, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 17:33:15][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "45/60", "eta": "1 day, 14:54:49", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.090446, "lr": 0.000079, "time_diff": 109.274077, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 17:48:26][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "45/60", "eta": "1 day, 10:11:10", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.254416, "lr": 0.000078, "time_diff": 96.753920, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 18:05:40][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "45/60", "eta": "1 day, 10:59:19", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.284108, "lr": 0.000077, "time_diff": 99.809548, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 18:22:44][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "45/60", "eta": "1 day, 15:08:51", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.235904, "lr": 0.000076, "time_diff": 112.565357, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 18:40:56][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "45/60", "eta": "1 day, 11:20:55", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.177421, "lr": 0.000075, "time_diff": 102.460138, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 18:58:25][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "45/60", "eta": "1 day, 20:57:13", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.282158, "lr": 0.000074, "time_diff": 131.358216, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 19:01:52][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "17.25/219.90 GB", "_type": "train_epoch", "epoch": "45/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.270502, "lr": 0.000073, "time_diff": 0.000224, "top1_err": 12.195122, "top3_err": 0.000000}
+[11/22 19:20:39][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "46/60", "eta": "2 days, 13:43:01", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.180637, "lr": 0.000072, "time_diff": 182.115757, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 19:36:58][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "46/60", "eta": "1 day, 5:26:56", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.114330, "lr": 0.000071, "time_diff": 87.616684, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 19:55:04][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "46/60", "eta": "1 day, 8:00:53", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.164755, "lr": 0.000070, "time_diff": 96.044687, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 20:11:06][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "46/60", "eta": "1 day, 9:10:04", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.149990, "lr": 0.000069, "time_diff": 100.339535, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 20:27:36][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "46/60", "eta": "1 day, 10:22:26", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.222225, "lr": 0.000068, "time_diff": 104.869661, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 20:46:56][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "46/60", "eta": "1 day, 14:47:38", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.242182, "lr": 0.000067, "time_diff": 119.366219, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 21:03:00][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "46/60", "eta": "1 day, 6:58:36", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.139882, "lr": 0.000066, "time_diff": 96.135009, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 21:19:33][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "46/60", "eta": "1 day, 13:55:48", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.225287, "lr": 0.000065, "time_diff": 118.737780, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 21:22:55][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "17.19/219.90 GB", "_type": "train_epoch", "epoch": "46/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.231043, "lr": 0.000064, "time_diff": 0.000190, "top1_err": 9.146341, "top3_err": 0.000000}
+[11/22 21:40:57][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "47/60", "eta": "1 day, 10:06:14", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.149363, "lr": 0.000063, "time_diff": 107.885920, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 21:58:32][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "47/60", "eta": "1 day, 5:30:00", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.193496, "lr": 0.000062, "time_diff": 94.149531, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/22 22:15:11][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "47/60", "eta": "1 day, 4:46:18", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.243006, "lr": 0.000061, "time_diff": 92.646344, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 22:32:44][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "47/60", "eta": "23:32:57", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.190183, "lr": 0.000060, "time_diff": 76.513878, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/22 22:49:34][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "47/60", "eta": "1 day, 0:57:56", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.288712, "lr": 0.000059, "time_diff": 81.854959, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 23:06:32][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "47/60", "eta": "1 day, 5:36:10", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.246896, "lr": 0.000058, "time_diff": 97.950813, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 23:24:20][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "47/60", "eta": "1 day, 6:35:38", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.197303, "lr": 0.000057, "time_diff": 102.169631, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 23:40:43][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "47/60", "eta": "1 day, 4:58:42", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.266009, "lr": 0.000056, "time_diff": 97.680310, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/22 23:43:49][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "17.19/219.90 GB", "_type": "train_epoch", "epoch": "47/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.230510, "lr": 0.000056, "time_diff": 0.000144, "top1_err": 10.060976, "top3_err": 0.000000}
+[11/23 00:01:07][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "48/60", "eta": "1 day, 0:58:33", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.240300, "lr": 0.000055, "time_diff": 85.145406, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 00:16:53][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "48/60", "eta": "1 day, 3:59:46", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.215627, "lr": 0.000054, "time_diff": 96.354427, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 00:32:24][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "48/60", "eta": "1 day, 3:39:12", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.286241, "lr": 0.000053, "time_diff": 96.092923, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 00:47:47][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "48/60", "eta": "21:35:21", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.143651, "lr": 0.000052, "time_diff": 75.751771, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 01:05:24][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "48/60", "eta": "1 day, 6:57:26", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.211799, "lr": 0.000051, "time_diff": 109.691031, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 01:21:24][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "48/60", "eta": "1 day, 6:38:45", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.231921, "lr": 0.000050, "time_diff": 109.667243, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 01:37:20][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "48/60", "eta": "1 day, 1:08:53", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.253167, "lr": 0.000049, "time_diff": 90.897164, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 01:55:50][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "48/60", "eta": "2 days, 17:28:20", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.212612, "lr": 0.000048, "time_diff": 239.047302, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 01:58:49][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "18.93/219.90 GB", "_type": "train_epoch", "epoch": "48/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.237275, "lr": 0.000048, "time_diff": 0.000358, "top1_err": 9.146341, "top3_err": 0.000000}
+[11/23 02:13:46][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "49/60", "eta": "1 day, 7:58:26", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.246318, "lr": 0.000047, "time_diff": 118.178933, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 02:29:45][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "49/60", "eta": "1 day, 4:42:21", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.263977, "lr": 0.000046, "time_diff": 107.201110, "top1_err": 18.750000, "top3_err": 0.000000}
+[11/23 02:46:23][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "49/60", "eta": "1 day, 4:40:32", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.176871, "lr": 0.000045, "time_diff": 108.210179, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 03:02:34][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "49/60", "eta": "21:07:01", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.213506, "lr": 0.000044, "time_diff": 80.531441, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 03:17:19][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "49/60", "eta": "1 day, 1:49:33", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.125864, "lr": 0.000043, "time_diff": 99.543825, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 03:34:27][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "49/60", "eta": "1 day, 5:10:05", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.222642, "lr": 0.000042, "time_diff": 113.642127, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 03:51:15][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "49/60", "eta": "20:12:20", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.183843, "lr": 0.000041, "time_diff": 79.584675, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 04:07:19][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "49/60", "eta": "1 day, 6:41:24", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.213544, "lr": 0.000041, "time_diff": 122.217152, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 04:10:05][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "13.37/219.90 GB", "_type": "train_epoch", "epoch": "49/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.242683, "lr": 0.000040, "time_diff": 0.000188, "top1_err": 9.451220, "top3_err": 0.000000}
+[11/23 04:24:43][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "50/60", "eta": "18:06:55", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.253377, "lr": 0.000040, "time_diff": 73.111879, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 04:38:01][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "50/60", "eta": "23:30:42", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.219083, "lr": 0.000039, "time_diff": 95.966304, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 04:50:26][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "50/60", "eta": "18:42:22", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.251865, "lr": 0.000038, "time_diff": 77.227924, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 05:04:01][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "50/60", "eta": "17:03:42", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.206553, "lr": 0.000037, "time_diff": 71.256129, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 05:16:01][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "50/60", "eta": "17:34:48", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.193381, "lr": 0.000036, "time_diff": 74.282631, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 05:27:47][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "50/60", "eta": "20:28:59", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.226631, "lr": 0.000035, "time_diff": 87.576059, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 05:39:56][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "50/60", "eta": "18:14:04", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.200788, "lr": 0.000035, "time_diff": 78.900131, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 05:51:51][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "50/60", "eta": "17:47:31", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.333508, "lr": 0.000034, "time_diff": 77.921136, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 05:54:10][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "11.96/219.90 GB", "_type": "train_epoch", "epoch": "50/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.253057, "lr": 0.000034, "time_diff": 0.000089, "top1_err": 10.518293, "top3_err": 0.000000}
+[11/23 05:54:22][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "val_iter", "epoch": "50/60", "eta": "0:00:20", "gpu_mem": "7.11 GB", "iter": "10/35", "time_diff": 0.831922, "top1_err": 75.000000, "top3_err": 0.000000}
+[11/23 05:54:56][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "val_iter", "epoch": "50/60", "eta": "0:03:45", "gpu_mem": "7.11 GB", "iter": "20/35", "time_diff": 15.046264, "top1_err": 50.000000, "top3_err": 0.000000}
+[11/23 05:56:08][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "val_iter", "epoch": "50/60", "eta": "0:01:18", "gpu_mem": "7.11 GB", "iter": "30/35", "time_diff": 15.697270, "top1_err": 87.500000, "top3_err": 0.000000}
+[11/23 05:57:12][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "11.92/219.90 GB", "_type": "val_epoch", "epoch": "50/60", "gpu_mem": "7.11 GB", "min_top1_err": 71.062271, "min_top3_err": 0.000000, "time_diff": 0.000027, "top1_err": 71.062271, "top3_err": 0.000000}
+[11/23 06:08:49][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "51/60", "eta": "14:30:50", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.220540, "lr": 0.000033, "time_diff": 64.507246, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 06:20:29][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "51/60", "eta": "14:33:20", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.161428, "lr": 0.000032, "time_diff": 65.501166, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 06:31:49][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "51/60", "eta": "14:28:54", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.266205, "lr": 0.000031, "time_diff": 65.992742, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 06:43:39][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "51/60", "eta": "19:16:12", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.296009, "lr": 0.000030, "time_diff": 88.938884, "top1_err": 18.750000, "top3_err": 0.000000}
+[11/23 06:55:20][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "51/60", "eta": "13:52:16", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.171429, "lr": 0.000030, "time_diff": 64.852399, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 07:10:01][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "51/60", "eta": "13:05:26", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.263205, "lr": 0.000029, "time_diff": 62.008587, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 07:22:05][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "51/60", "eta": "17:04:14", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.246179, "lr": 0.000028, "time_diff": 81.938937, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 07:34:42][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "51/60", "eta": "17:33:16", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.275278, "lr": 0.000027, "time_diff": 85.400688, "top1_err": 18.750000, "top3_err": 0.000000}
+[11/23 07:37:02][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "11.72/219.90 GB", "_type": "train_epoch", "epoch": "51/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.269139, "lr": 0.000027, "time_diff": 0.000140, "top1_err": 11.432927, "top3_err": 0.000000}
+[11/23 07:48:56][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "52/60", "eta": "17:26:57", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.269609, "lr": 0.000027, "time_diff": 86.287948, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 08:00:03][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "52/60", "eta": "11:43:25", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.131264, "lr": 0.000026, "time_diff": 58.781462, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 08:12:31][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "52/60", "eta": "13:40:52", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.179163, "lr": 0.000025, "time_diff": 69.566275, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 08:26:32][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "52/60", "eta": "14:28:58", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.203977, "lr": 0.000024, "time_diff": 74.696795, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 08:37:21][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "52/60", "eta": "11:19:41", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.165274, "lr": 0.000024, "time_diff": 59.275448, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 08:48:49][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "52/60", "eta": "12:27:22", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.152588, "lr": 0.000023, "time_diff": 66.139350, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 09:02:32][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "52/60", "eta": "16:46:10", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.234811, "lr": 0.000022, "time_diff": 90.375272, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 09:14:15][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "52/60", "eta": "14:36:42", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.205720, "lr": 0.000022, "time_diff": 79.942292, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 09:16:44][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "12.01/219.90 GB", "_type": "train_epoch", "epoch": "52/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.206714, "lr": 0.000022, "time_diff": 0.000178, "top1_err": 7.774390, "top3_err": 0.000000}
+[11/23 09:31:18][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "53/60", "eta": "13:44:09", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.158360, "lr": 0.000021, "time_diff": 76.546486, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 09:43:04][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "53/60", "eta": "9:09:12", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.447807, "lr": 0.000020, "time_diff": 51.812688, "top1_err": 18.750000, "top3_err": 0.000000}
+[11/23 09:57:46][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "53/60", "eta": "16:44:34", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.239526, "lr": 0.000020, "time_diff": 96.285336, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 10:09:45][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "53/60", "eta": "15:50:41", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.173388, "lr": 0.000019, "time_diff": 92.599615, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 10:22:33][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "53/60", "eta": "9:53:46", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.238933, "lr": 0.000019, "time_diff": 58.789276, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 10:34:14][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "53/60", "eta": "8:34:59", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.327706, "lr": 0.000018, "time_diff": 51.844826, "top1_err": 18.750000, "top3_err": 0.000000}
+[11/23 10:46:58][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "53/60", "eta": "17:11:36", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.243190, "lr": 0.000017, "time_diff": 105.625512, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 10:59:21][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "53/60", "eta": "10:14:08", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.173070, "lr": 0.000017, "time_diff": 63.972750, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 11:01:56][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "12.25/219.90 GB", "_type": "train_epoch", "epoch": "53/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.260343, "lr": 0.000017, "time_diff": 0.000246, "top1_err": 10.975610, "top3_err": 0.000000}
+[11/23 11:16:33][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "54/60", "eta": "13:21:04", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.165434, "lr": 0.000016, "time_diff": 85.221377, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 11:29:41][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "54/60", "eta": "16:24:00", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.235722, "lr": 0.000016, "time_diff": 106.571880, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 11:41:32][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "54/60", "eta": "13:20:10", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.216715, "lr": 0.000015, "time_diff": 88.253997, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 11:54:27][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "54/60", "eta": "15:37:55", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.221005, "lr": 0.000014, "time_diff": 105.384497, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 12:06:52][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "54/60", "eta": "10:55:36", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.236269, "lr": 0.000014, "time_diff": 75.070098, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 12:18:33][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "54/60", "eta": "8:01:06", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.183179, "lr": 0.000013, "time_diff": 56.159781, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 12:31:47][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "54/60", "eta": "10:34:15", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.199233, "lr": 0.000013, "time_diff": 75.507326, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 12:44:33][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "54/60", "eta": "12:13:29", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.274831, "lr": 0.000012, "time_diff": 89.087165, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 12:47:41][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "12.52/219.90 GB", "_type": "train_epoch", "epoch": "54/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.256120, "lr": 0.000012, "time_diff": 0.000252, "top1_err": 10.060976, "top3_err": 0.000000}
+[11/23 13:00:48][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "55/60", "eta": "11:47:55", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.268166, "lr": 0.000012, "time_diff": 88.123245, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 13:13:34][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "55/60", "eta": "8:50:13", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.164172, "lr": 0.000011, "time_diff": 67.400867, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 13:26:00][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "55/60", "eta": "9:44:21", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.197273, "lr": 0.000011, "time_diff": 75.891354, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 13:38:51][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "55/60", "eta": "8:51:31", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.238913, "lr": 0.000010, "time_diff": 70.555449, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 13:51:23][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "55/60", "eta": "9:27:09", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.200167, "lr": 0.000010, "time_diff": 76.988798, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 14:03:39][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "55/60", "eta": "9:09:26", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.194757, "lr": 0.000009, "time_diff": 76.311034, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 14:18:37][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "55/60", "eta": "10:45:50", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.233510, "lr": 0.000009, "time_diff": 91.824682, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 14:31:37][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "55/60", "eta": "7:21:40", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.141616, "lr": 0.000009, "time_diff": 64.321595, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 14:34:03][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "12.15/219.90 GB", "_type": "train_epoch", "epoch": "55/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.248138, "lr": 0.000009, "time_diff": 0.000221, "top1_err": 10.213415, "top3_err": 0.000000}
+[11/23 14:48:40][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "56/60", "eta": "23:24:44", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.200816, "lr": 0.000008, "time_diff": 210.711379, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 15:00:18][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "56/60", "eta": "8:50:04", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.154952, "lr": 0.000008, "time_diff": 81.548815, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 15:13:43][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "56/60", "eta": "7:17:40", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.199111, "lr": 0.000007, "time_diff": 69.106198, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 15:25:42][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "56/60", "eta": "9:19:03", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.248009, "lr": 0.000007, "time_diff": 90.656869, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 15:39:01][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "56/60", "eta": "7:53:20", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.298511, "lr": 0.000007, "time_diff": 78.889342, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 15:51:56][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "56/60", "eta": "7:26:15", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.314306, "lr": 0.000006, "time_diff": 76.500442, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 16:04:03][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "56/60", "eta": "5:40:43", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.198386, "lr": 0.000006, "time_diff": 60.128154, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 16:17:43][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "56/60", "eta": "9:36:06", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.166409, "lr": 0.000006, "time_diff": 104.746512, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 16:20:10][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "12.18/219.90 GB", "_type": "train_epoch", "epoch": "56/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.255471, "lr": 0.000005, "time_diff": 0.000081, "top1_err": 9.908537, "top3_err": 0.000000}
+[11/23 16:35:19][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "57/60", "eta": "6:50:19", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.292286, "lr": 0.000005, "time_diff": 77.421269, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 16:46:12][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "57/60", "eta": "6:31:59", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.113050, "lr": 0.000005, "time_diff": 76.361342, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 16:58:20][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "57/60", "eta": "6:58:41", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.241600, "lr": 0.000005, "time_diff": 84.301225, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 17:12:25][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "57/60", "eta": "7:25:57", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.169398, "lr": 0.000004, "time_diff": 92.907014, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 17:26:07][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "57/60", "eta": "6:41:18", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.188454, "lr": 0.000004, "time_diff": 86.613743, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 17:37:57][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "57/60", "eta": "5:40:40", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.347287, "lr": 0.000004, "time_diff": 76.271199, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 17:50:38][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "57/60", "eta": "4:53:15", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.272748, "lr": 0.000003, "time_diff": 68.198072, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 18:03:10][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "57/60", "eta": "5:39:41", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.166279, "lr": 0.000003, "time_diff": 82.181973, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 18:06:04][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "12.42/219.90 GB", "_type": "train_epoch", "epoch": "57/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.260359, "lr": 0.000003, "time_diff": 0.000089, "top1_err": 9.908537, "top3_err": 0.000000}
+[11/23 18:18:01][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "58/60", "eta": "5:15:16", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.141428, "lr": 0.000003, "time_diff": 80.155463, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 18:31:54][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "58/60", "eta": "3:57:19", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.216288, "lr": 0.000003, "time_diff": 63.007070, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 18:44:11][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "58/60", "eta": "3:09:08", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.215412, "lr": 0.000002, "time_diff": 52.539440, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 18:56:35][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "58/60", "eta": "4:37:27", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.114105, "lr": 0.000002, "time_diff": 80.815471, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 19:09:33][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "58/60", "eta": "3:53:36", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.162980, "lr": 0.000002, "time_diff": 71.512064, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 19:23:49][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "58/60", "eta": "4:05:01", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.187434, "lr": 0.000002, "time_diff": 79.039830, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 19:37:24][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "58/60", "eta": "3:52:16", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.182940, "lr": 0.000002, "time_diff": 79.184375, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 19:49:55][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "58/60", "eta": "3:38:58", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.301739, "lr": 0.000001, "time_diff": 79.146661, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 19:52:07][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "12.41/219.90 GB", "_type": "train_epoch", "epoch": "58/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.235608, "lr": 0.000001, "time_diff": 0.000084, "top1_err": 9.298780, "top3_err": 0.000000}
+[11/23 20:04:33][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "59/60", "eta": "2:22:53", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.137618, "lr": 0.000001, "time_diff": 55.674341, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 20:17:47][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "59/60", "eta": "2:34:11", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.289872, "lr": 0.000001, "time_diff": 64.246191, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 20:30:41][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "59/60", "eta": "2:12:33", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.200869, "lr": 0.000001, "time_diff": 59.356911, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 20:43:37][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "59/60", "eta": "2:36:43", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.245458, "lr": 0.000001, "time_diff": 75.838415, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 20:56:27][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "59/60", "eta": "1:57:13", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.189847, "lr": 0.000001, "time_diff": 61.699432, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 21:11:28][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "59/60", "eta": "2:38:14", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.279360, "lr": 0.000001, "time_diff": 91.295571, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 21:23:32][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "59/60", "eta": "1:35:04", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.098900, "lr": 0.000000, "time_diff": 60.690851, "top1_err": 0.000000, "top3_err": 0.000000}
+[11/23 21:35:40][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "59/60", "eta": "1:25:32", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.263371, "lr": 0.000000, "time_diff": 61.099581, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 21:37:58][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "12.17/219.90 GB", "_type": "train_epoch", "epoch": "59/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.225736, "lr": 0.000000, "time_diff": 0.000141, "top1_err": 9.603659, "top3_err": 0.000000}
+[11/23 21:50:36][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "60/60", "eta": "1:21:41", "gpu_mem": "7.11 GB", "iter": "10/82", "loss": 0.196642, "lr": 0.000000, "time_diff": 68.078955, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 22:03:48][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "60/60", "eta": "1:17:49", "gpu_mem": "7.11 GB", "iter": "20/82", "loss": 0.234146, "lr": 0.000000, "time_diff": 75.306569, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 22:16:30][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "60/60", "eta": "0:56:03", "gpu_mem": "7.11 GB", "iter": "30/82", "loss": 0.185568, "lr": 0.000000, "time_diff": 64.684946, "top1_err": 6.250000, "top3_err": 0.000000}
+[11/23 22:28:18][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "60/60", "eta": "0:44:00", "gpu_mem": "7.11 GB", "iter": "40/82", "loss": 0.269423, "lr": 0.000000, "time_diff": 62.875607, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 22:39:41][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "60/60", "eta": "0:43:25", "gpu_mem": "7.11 GB", "iter": "50/82", "loss": 0.192221, "lr": 0.000000, "time_diff": 81.413028, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 22:53:02][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "60/60", "eta": "0:30:57", "gpu_mem": "7.11 GB", "iter": "60/82", "loss": 0.232547, "lr": 0.000000, "time_diff": 84.426778, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 23:08:05][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "60/60", "eta": "0:22:50", "gpu_mem": "7.11 GB", "iter": "70/82", "loss": 0.245372, "lr": 0.000000, "time_diff": 114.236742, "top1_err": 18.750000, "top3_err": 0.000000}
+[11/23 23:20:53][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "train_iter", "epoch": "60/60", "eta": "0:03:39", "gpu_mem": "7.11 GB", "iter": "80/82", "loss": 0.217549, "lr": 0.000000, "time_diff": 109.910581, "top1_err": 12.500000, "top3_err": 0.000000}
+[11/23 23:23:27][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "12.26/219.90 GB", "_type": "train_epoch", "epoch": "60/60", "eta": "0:00:00", "gpu_mem": "7.11 GB", "loss": 0.253738, "lr": 0.000000, "time_diff": 0.000082, "top1_err": 11.890244, "top3_err": 0.000000}
+[11/23 23:23:39][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "val_iter", "epoch": "60/60", "eta": "0:00:21", "gpu_mem": "7.11 GB", "iter": "10/35", "time_diff": 0.866710, "top1_err": 81.250000, "top3_err": 0.000000}
+[11/23 23:24:15][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "val_iter", "epoch": "60/60", "eta": "0:03:52", "gpu_mem": "7.11 GB", "iter": "20/35", "time_diff": 15.506737, "top1_err": 62.500000, "top3_err": 0.000000}
+[11/23 23:25:34][INFO] slowfast.utils.logging:   93: json_stats: {"_type": "val_iter", "epoch": "60/60", "eta": "0:01:16", "gpu_mem": "7.11 GB", "iter": "30/35", "time_diff": 15.281660, "top1_err": 87.500000, "top3_err": 0.000000}
+[11/23 23:26:37][INFO] slowfast.utils.logging:   93: json_stats: {"RAM": "12.32/219.90 GB", "_type": "val_epoch", "epoch": "60/60", "gpu_mem": "7.11 GB", "min_top1_err": 71.062271, "min_top3_err": 0.000000, "time_diff": 0.000040, "top1_err": 75.457875, "top3_err": 0.000000}
+[11/23 23:26:37][INFO] test_net:  173: Test with config:
+[11/23 23:26:37][INFO] test_net:  174: AVA:
+  ANNOTATION_DIR: /mnt/vol/gfsai-flash3-east/ai-group/users/haoqifan/ava/frame_list/
+  BGR: False
+  DETECTION_SCORE_THRESH: 0.9
+  EXCLUSION_FILE: ava_val_excluded_timestamps_v2.2.csv
+  FRAME_DIR: /mnt/fair-flash3-east/ava_trainval_frames.img/
+  FRAME_LIST_DIR: /mnt/vol/gfsai-flash3-east/ai-group/users/haoqifan/ava/frame_list/
+  FULL_TEST_ON_VAL: False
+  GROUNDTRUTH_FILE: ava_val_v2.2.csv
+  IMG_PROC_BACKEND: cv2
+  LABEL_MAP_FILE: ava_action_list_v2.2_for_activitynet_2019.pbtxt
+  TEST_FORCE_FLIP: False
+  TEST_LISTS: ['val.csv']
+  TEST_PREDICT_BOX_LISTS: ['ava_val_predicted_boxes.csv']
+  TRAIN_GT_BOX_LISTS: ['ava_train_v2.2.csv']
+  TRAIN_LISTS: ['train.csv']
+  TRAIN_PCA_EIGVAL: [0.225, 0.224, 0.229]
+  TRAIN_PCA_EIGVEC: [[-0.5675, 0.7192, 0.4009], [-0.5808, -0.0045, -0.814], [-0.5836, -0.6948, 0.4203]]
+  TRAIN_PCA_JITTER_ONLY: True
+  TRAIN_PREDICT_BOX_LISTS: []
+  TRAIN_USE_COLOR_AUGMENTATION: False
+BENCHMARK:
+  LOG_PERIOD: 100
+  NUM_EPOCHS: 5
+  SHUFFLE: True
+BN:
+  NORM_TYPE: batchnorm
+  NUM_BATCHES_PRECISE: 200
+  NUM_SPLITS: 1
+  NUM_SYNC_DEVICES: 1
+  USE_PRECISE_STATS: True
+  WEIGHT_DECAY: 0.0
+DATA:
+  CROP_SIZE: 224
+  DECODING_BACKEND: pyav
+  ENSEMBLE_METHOD: sum
+  INPUT_CHANNEL_NUM: [3]
+  INV_UNIFORM_SAMPLE: False
+  MEAN: [0.45, 0.45, 0.45]
+  MULTI_LABEL: False
+  NUM_FRAMES: 8
+  OLD_PATH_TO_DATA_DIR: 
+  PATH_LABEL_SEPARATOR:  
+  PATH_PREFIX: 
+  PATH_TO_DATA_DIR: /public/home/zhouz/perl5/dataset/crime/list/
+  RANDOM_FLIP: True
+  REVERSE_INPUT_CHANNEL: False
+  SAMPLING_RATE: 8
+  STD: [0.225, 0.225, 0.225]
+  TARGET_FPS: 30
+  TEST_CROP_SIZE: 224
+  TRAIN_CROP_SIZE: 224
+  TRAIN_JITTER_SCALES: [256, 320]
+DATA_LOADER:
+  ENABLE_MULTI_THREAD_DECODE: False
+  NUM_WORKERS: 0
+  PIN_MEMORY: False
+DEMO:
+  BUFFER_SIZE: 0
+  CLIP_VIS_SIZE: 10
+  COMMON_CLASS_NAMES: ['watch (a person)', 'talk to (e.g., self, a person, a group)', 'listen to (a person)', 'touch (an object)', 'carry/hold (an object)', 'walk', 'sit', 'lie/sleep', 'bend/bow (at the waist)']
+  COMMON_CLASS_THRES: 0.7
+  DETECTRON2_CFG: COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml
+  DETECTRON2_THRESH: 0.9
+  DETECTRON2_WEIGHTS: detectron2://COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl
+  DISPLAY_HEIGHT: 0
+  DISPLAY_WIDTH: 0
+  ENABLE: False
+  FPS: 30
+  GT_BOXES: 
+  INPUT_FORMAT: BGR
+  INPUT_VIDEO: 
+  LABEL_FILE_PATH: 
+  NUM_CLIPS_SKIP: 0
+  NUM_VIS_INSTANCES: 2
+  OUTPUT_FILE: 
+  OUTPUT_FPS: -1
+  PREDS_BOXES: 
+  SLOWMO: 1
+  STARTING_SECOND: 900
+  THREAD_ENABLE: False
+  UNCOMMON_CLASS_THRES: 0.3
+  VIS_MODE: thres
+  WEBCAM: -1
+DETECTION:
+  ALIGNED: True
+  ENABLE: False
+  ROI_XFORM_RESOLUTION: 7
+  SPATIAL_SCALE_FACTOR: 16
+DIST_BACKEND: nccl
+LOG_MODEL_INFO: True
+LOG_PERIOD: 10
+MODEL:
+  ARCH: slow
+  DROPOUT_RATE: 0.5
+  FC_INIT_STD: 0.01
+  HEAD_ACT: softmax
+  LOSS_FUNC: cross_entropy
+  MODEL_NAME: ResNet
+  MULTI_PATHWAY_ARCH: ['slowfast']
+  NUM_CLASSES: 3
+  OLD_MODEL_NAME: OLD_ResNet
+  OLD_NUM_CLASSES: 3
+  SINGLE_PATHWAY_ARCH: ['c2d', 'i3d', 'slow']
+MULTIGRID:
+  BN_BASE_SIZE: 8
+  DEFAULT_B: 0
+  DEFAULT_S: 0
+  DEFAULT_T: 0
+  EPOCH_FACTOR: 1.5
+  EVAL_FREQ: 3
+  LONG_CYCLE: False
+  LONG_CYCLE_FACTORS: [(0.25, 0.7071067811865476), (0.5, 0.7071067811865476), (0.5, 1), (1, 1)]
+  LONG_CYCLE_SAMPLING_RATE: 0
+  SHORT_CYCLE: False
+  SHORT_CYCLE_FACTORS: [0.5, 0.7071067811865476]
+NONLOCAL:
+  GROUP: [[1], [1], [1], [1]]
+  INSTANTIATION: dot_product
+  LOCATION: [[[]], [[]], [[]], [[]]]
+  POOL: [[[1, 2, 2], [1, 2, 2]], [[1, 2, 2], [1, 2, 2]], [[1, 2, 2], [1, 2, 2]], [[1, 2, 2], [1, 2, 2]]]
+NUM_GPUS: 1
+NUM_SHARDS: 1
+OUTPUT_DIR: ./HAV
+RESNET:
+  DEPTH: 50
+  INPLACE_RELU: True
+  NUM_BLOCK_TEMP_KERNEL: [[3], [4], [6], [3]]
+  NUM_GROUPS: 1
+  SPATIAL_DILATIONS: [[1], [1], [1], [1]]
+  SPATIAL_STRIDES: [[1], [2], [2], [2]]
+  STRIDE_1X1: False
+  TRANS_FUNC: bottleneck_transform
+  WIDTH_PER_GROUP: 64
+  ZERO_INIT_FINAL_BN: True
+RNG_SEED: 0
+SHARD_ID: 0
+SLOWFAST:
+  ALPHA: 8
+  BETA_INV: 8
+  FUSION_CONV_CHANNEL_RATIO: 2
+  FUSION_KERNEL_SZ: 5
+SOLVER:
+  BASE_LR: 0.0005
+  DAMPENING: 0.0
+  GAMMA: 0.1
+  LRS: []
+  LR_POLICY: cosine
+  MAX_EPOCH: 60
+  MOMENTUM: 0.9
+  NESTEROV: True
+  OPTIMIZING_METHOD: sgd
+  STEPS: []
+  STEP_SIZE: 1
+  WARMUP_EPOCHS: 0.0
+  WARMUP_FACTOR: 0.1
+  WARMUP_START_LR: 0.01
+  WEIGHT_DECAY: 1e-06
+TENSORBOARD:
+  CATEGORIES_PATH: 
+  CLASS_NAMES_PATH: 
+  CONFUSION_MATRIX:
+    ENABLE: False
+    FIGSIZE: [8, 8]
+    SUBSET_PATH: 
+  ENABLE: False
+  HISTOGRAM:
+    ENABLE: False
+    FIGSIZE: [8, 8]
+    SUBSET_PATH: 
+    TOPK: 10
+  LOG_DIR: 
+  MODEL_VIS:
+    ACTIVATIONS: False
+    COLORMAP: Pastel2
+    ENABLE: False
+    GRAD_CAM:
+      COLORMAP: viridis
+      ENABLE: True
+      LAYER_LIST: []
+      USE_TRUE_LABEL: False
+    INPUT_VIDEO: False
+    LAYER_LIST: []
+    MODEL_WEIGHTS: False
+    TOPK_PREDS: 1
+  PREDICTIONS_PATH: 
+  WRONG_PRED_VIS:
+    ENABLE: False
+    SUBSET_PATH: 
+    TAG: Incorrectly classified videos.
+TEST:
+  BATCH_SIZE: 32
+  CHECKPOINT_FILE_PATH: 
+  CHECKPOINT_TYPE: pytorch
+  DATASET: kinetics
+  ENABLE: True
+  NUM_ENSEMBLE_VIEWS: 10
+  NUM_SPATIAL_CROPS: 3
+  OLD_DATASET: old_kinetics
+  SAVE_RESULTS_PATH: 
+TRAIN:
+  AUTO_RESUME: True
+  BATCH_SIZE: 8
+  CHECKPOINT_FILE_PATH: /public/home/zhouz/perl5/Drone-ICIL/pretrained/SLOWONLY_8x8_R50.pkl
+  CHECKPOINT_INFLATE: True
+  CHECKPOINT_PERIOD: 1
+  CHECKPOINT_TYPE: caffe2
+  DATASET: kinetics
+  ENABLE: True
+  EVAL_PERIOD: 10
+  OLD_DATASET: Oldkinetics
+[11/23 23:26:40][INFO] slowfast.datasets.kinetics:   73: Constructing Kinetics test...
+[11/23 23:26:40][INFO] slowfast.datasets.kinetics:  133: Constructing kinetics dataloader (size: 8190) from /public/home/zhouz/perl5/dataset/crime/list/test.csv
+[11/23 23:26:40][INFO] test_net:  185: Testing model for 256 iterations
+[11/23 23:26:43][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "1", "eta": "0:15:01", "split": "test_iter", "time_diff": 3.522760}
+[11/23 23:26:47][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "2", "eta": "0:14:42", "split": "test_iter", "time_diff": 3.460880}
+[11/23 23:26:50][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "3", "eta": "0:15:13", "split": "test_iter", "time_diff": 3.595122}
+[11/23 23:26:54][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "4", "eta": "0:15:09", "split": "test_iter", "time_diff": 3.593797}
+[11/23 23:26:58][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "5", "eta": "0:14:30", "split": "test_iter", "time_diff": 3.455861}
+[11/23 23:27:01][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "6", "eta": "0:14:25", "split": "test_iter", "time_diff": 3.446370}
+[11/23 23:27:04][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "7", "eta": "0:14:21", "split": "test_iter", "time_diff": 3.444556}
+[11/23 23:27:08][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "8", "eta": "0:14:33", "split": "test_iter", "time_diff": 3.507692}
+[11/23 23:27:11][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "9", "eta": "0:14:11", "split": "test_iter", "time_diff": 3.432116}
+[11/23 23:27:15][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "10", "eta": "0:14:31", "split": "test_iter", "time_diff": 3.529794}
+[11/23 23:27:18][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "11", "eta": "0:14:15", "split": "test_iter", "time_diff": 3.476948}
+[11/23 23:27:22][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "12", "eta": "0:14:18", "split": "test_iter", "time_diff": 3.503133}
+[11/23 23:27:25][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "13", "eta": "0:14:13", "split": "test_iter", "time_diff": 3.499952}
+[11/23 23:27:29][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "14", "eta": "0:14:04", "split": "test_iter", "time_diff": 3.473796}
+[11/23 23:27:32][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "15", "eta": "0:14:16", "split": "test_iter", "time_diff": 3.538464}
+[11/23 23:27:36][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "16", "eta": "0:13:59", "split": "test_iter", "time_diff": 3.485146}
+[11/23 23:27:39][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "17", "eta": "0:13:57", "split": "test_iter", "time_diff": 3.488385}
+[11/23 23:27:43][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "18", "eta": "0:13:44", "split": "test_iter", "time_diff": 3.449314}
+[11/23 23:27:46][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "19", "eta": "0:13:40", "split": "test_iter", "time_diff": 3.448314}
+[11/23 23:27:50][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "20", "eta": "0:13:37", "split": "test_iter", "time_diff": 3.447681}
+[11/23 23:27:53][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "21", "eta": "0:13:45", "split": "test_iter", "time_diff": 3.498709}
+[11/23 23:27:57][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "22", "eta": "0:13:50", "split": "test_iter", "time_diff": 3.532283}
+[11/23 23:28:00][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "23", "eta": "0:13:51", "split": "test_iter", "time_diff": 3.552679}
+[11/23 23:28:04][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "24", "eta": "0:14:13", "split": "test_iter", "time_diff": 3.664861}
+[11/23 23:28:08][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "25", "eta": "0:14:07", "split": "test_iter", "time_diff": 3.651479}
+[11/23 23:28:11][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "26", "eta": "0:13:38", "split": "test_iter", "time_diff": 3.543471}
+[11/23 23:28:15][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "27", "eta": "0:13:44", "split": "test_iter", "time_diff": 3.583518}
+[11/23 23:28:18][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "28", "eta": "0:13:43", "split": "test_iter", "time_diff": 3.596861}
+[11/23 23:28:22][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "29", "eta": "0:13:20", "split": "test_iter", "time_diff": 3.510223}
+[11/23 23:28:25][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "30", "eta": "0:13:07", "split": "test_iter", "time_diff": 3.470600}
+[11/23 23:28:29][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "31", "eta": "0:13:06", "split": "test_iter", "time_diff": 3.478179}
+[11/23 23:28:32][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "32", "eta": "0:13:01", "split": "test_iter", "time_diff": 3.474202}
+[11/23 23:28:36][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "33", "eta": "0:13:00", "split": "test_iter", "time_diff": 3.483939}
+[11/23 23:28:39][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "34", "eta": "0:12:52", "split": "test_iter", "time_diff": 3.464066}
+[11/23 23:28:43][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "35", "eta": "0:12:48", "split": "test_iter", "time_diff": 3.461563}
+[11/23 23:28:46][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "36", "eta": "0:13:06", "split": "test_iter", "time_diff": 3.559292}
+[11/23 23:28:50][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "37", "eta": "0:12:49", "split": "test_iter", "time_diff": 3.496724}
+[11/23 23:28:53][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "38", "eta": "0:12:49", "split": "test_iter", "time_diff": 3.512900}
+[11/23 23:28:57][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "39", "eta": "0:12:57", "split": "test_iter", "time_diff": 3.566161}
+[11/23 23:29:00][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "40", "eta": "0:12:41", "split": "test_iter", "time_diff": 3.509370}
+[11/23 23:29:04][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "41", "eta": "0:12:27", "split": "test_iter", "time_diff": 3.462573}
+[11/23 23:29:07][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "42", "eta": "0:12:22", "split": "test_iter", "time_diff": 3.454549}
+[11/23 23:29:11][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "43", "eta": "0:12:16", "split": "test_iter", "time_diff": 3.442282}
+[11/23 23:29:14][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "44", "eta": "0:12:05", "split": "test_iter", "time_diff": 3.405055}
+[11/23 23:29:18][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "45", "eta": "0:12:14", "split": "test_iter", "time_diff": 3.463779}
+[11/23 23:29:21][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "46", "eta": "0:11:56", "split": "test_iter", "time_diff": 3.395327}
+[11/23 23:29:24][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "47", "eta": "0:11:55", "split": "test_iter", "time_diff": 3.406621}
+[11/23 23:29:28][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "48", "eta": "0:11:50", "split": "test_iter", "time_diff": 3.399297}
+[11/23 23:29:31][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "49", "eta": "0:12:03", "split": "test_iter", "time_diff": 3.480713}
+[11/23 23:29:35][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "50", "eta": "0:12:06", "split": "test_iter", "time_diff": 3.510639}
+[11/23 23:29:38][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "51", "eta": "0:12:04", "split": "test_iter", "time_diff": 3.518243}
+[11/23 23:29:42][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "52", "eta": "0:11:56", "split": "test_iter", "time_diff": 3.493786}
+[11/23 23:29:45][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "53", "eta": "0:11:58", "split": "test_iter", "time_diff": 3.523982}
+[11/23 23:29:49][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "54", "eta": "0:11:50", "split": "test_iter", "time_diff": 3.501924}
+[11/23 23:29:52][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "55", "eta": "0:11:43", "split": "test_iter", "time_diff": 3.480772}
+[11/23 23:29:56][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "56", "eta": "0:11:37", "split": "test_iter", "time_diff": 3.467777}
+[11/23 23:29:59][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "57", "eta": "0:11:35", "split": "test_iter", "time_diff": 3.477093}
+[11/23 23:30:03][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "58", "eta": "0:11:36", "split": "test_iter", "time_diff": 3.498305}
+[11/23 23:30:06][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "59", "eta": "0:11:32", "split": "test_iter", "time_diff": 3.499500}
+[11/23 23:30:10][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "60", "eta": "0:11:18", "split": "test_iter", "time_diff": 3.442923}
+[11/23 23:30:13][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "61", "eta": "0:11:09", "split": "test_iter", "time_diff": 3.417919}
+[11/23 23:30:17][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "62", "eta": "0:11:08", "split": "test_iter", "time_diff": 3.427517}
+[11/23 23:30:20][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "63", "eta": "0:11:16", "split": "test_iter", "time_diff": 3.489364}
+[11/23 23:30:24][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "64", "eta": "0:11:13", "split": "test_iter", "time_diff": 3.492092}
+[11/23 23:30:27][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "65", "eta": "0:11:00", "split": "test_iter", "time_diff": 3.440403}
+[11/23 23:30:31][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "66", "eta": "0:10:58", "split": "test_iter", "time_diff": 3.447798}
+[11/23 23:30:34][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "67", "eta": "0:10:55", "split": "test_iter", "time_diff": 3.450932}
+[11/23 23:30:37][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "68", "eta": "0:10:45", "split": "test_iter", "time_diff": 3.413419}
+[11/23 23:30:41][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "69", "eta": "0:10:46", "split": "test_iter", "time_diff": 3.439662}
+[11/23 23:30:44][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "70", "eta": "0:10:46", "split": "test_iter", "time_diff": 3.457594}
+[11/23 23:30:48][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "71", "eta": "0:10:39", "split": "test_iter", "time_diff": 3.438563}
+[11/23 23:30:51][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "72", "eta": "0:10:47", "split": "test_iter", "time_diff": 3.497890}
+[11/23 23:30:55][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "73", "eta": "0:10:54", "split": "test_iter", "time_diff": 3.558299}
+[11/23 23:30:58][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "74", "eta": "0:10:43", "split": "test_iter", "time_diff": 3.517452}
+[11/23 23:31:02][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "75", "eta": "0:10:35", "split": "test_iter", "time_diff": 3.493040}
+[11/23 23:31:05][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "76", "eta": "0:10:39", "split": "test_iter", "time_diff": 3.531960}
+[11/23 23:31:09][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "77", "eta": "0:10:30", "split": "test_iter", "time_diff": 3.505538}
+[11/23 23:31:12][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "78", "eta": "0:10:27", "split": "test_iter", "time_diff": 3.504211}
+[11/23 23:31:16][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "79", "eta": "0:10:28", "split": "test_iter", "time_diff": 3.532654}
+[11/23 23:31:19][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "80", "eta": "0:10:16", "split": "test_iter", "time_diff": 3.482264}
+[11/23 23:31:23][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "81", "eta": "0:10:14", "split": "test_iter", "time_diff": 3.490957}
+[11/23 23:31:26][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "82", "eta": "0:10:08", "split": "test_iter", "time_diff": 3.479619}
+[11/23 23:31:30][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "83", "eta": "0:10:05", "split": "test_iter", "time_diff": 3.479314}
+[11/23 23:31:33][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "84", "eta": "0:10:09", "split": "test_iter", "time_diff": 3.523783}
+[11/23 23:31:37][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "85", "eta": "0:10:06", "split": "test_iter", "time_diff": 3.524773}
+[11/23 23:31:40][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "86", "eta": "0:10:02", "split": "test_iter", "time_diff": 3.524922}
+[11/23 23:31:44][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "87", "eta": "0:09:49", "split": "test_iter", "time_diff": 3.466913}
+[11/23 23:31:47][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "88", "eta": "0:09:47", "split": "test_iter", "time_diff": 3.476330}
+[11/23 23:31:51][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "89", "eta": "0:09:38", "split": "test_iter", "time_diff": 3.444288}
+[11/23 23:31:54][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "90", "eta": "0:09:37", "split": "test_iter", "time_diff": 3.455257}
+[11/23 23:31:58][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "91", "eta": "0:09:25", "split": "test_iter", "time_diff": 3.409536}
+[11/23 23:32:01][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "92", "eta": "0:09:27", "split": "test_iter", "time_diff": 3.438894}
+[11/23 23:32:05][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "93", "eta": "0:09:23", "split": "test_iter", "time_diff": 3.438588}
+[11/23 23:32:08][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "94", "eta": "0:09:19", "split": "test_iter", "time_diff": 3.434827}
+[11/23 23:32:11][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "95", "eta": "0:09:23", "split": "test_iter", "time_diff": 3.477070}
+[11/23 23:32:15][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "96", "eta": "0:09:12", "split": "test_iter", "time_diff": 3.431413}
+[11/23 23:32:18][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "97", "eta": "0:09:12", "split": "test_iter", "time_diff": 3.452306}
+[11/23 23:32:22][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "98", "eta": "0:09:08", "split": "test_iter", "time_diff": 3.452358}
+[11/23 23:32:25][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "99", "eta": "0:09:17", "split": "test_iter", "time_diff": 3.525654}
+[11/23 23:32:29][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "100", "eta": "0:09:16", "split": "test_iter", "time_diff": 3.542256}
+[11/23 23:32:32][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "101", "eta": "0:09:11", "split": "test_iter", "time_diff": 3.538221}
+[11/23 23:32:36][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "102", "eta": "0:09:12", "split": "test_iter", "time_diff": 3.561325}
+[11/23 23:32:40][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "103", "eta": "0:08:57", "split": "test_iter", "time_diff": 3.491041}
+[11/23 23:32:43][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "104", "eta": "0:09:00", "split": "test_iter", "time_diff": 3.533632}
+[11/23 23:32:47][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "105", "eta": "0:08:58", "split": "test_iter", "time_diff": 3.540030}
+[11/23 23:32:50][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "106", "eta": "0:08:40", "split": "test_iter", "time_diff": 3.450141}
+[11/23 23:32:53][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "107", "eta": "0:08:35", "split": "test_iter", "time_diff": 3.434308}
+[11/23 23:32:57][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "108", "eta": "0:08:28", "split": "test_iter", "time_diff": 3.410215}
+[11/23 23:33:00][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "109", "eta": "0:08:24", "split": "test_iter", "time_diff": 3.405924}
+[11/23 23:33:04][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "110", "eta": "0:08:21", "split": "test_iter", "time_diff": 3.413392}
+[11/23 23:33:07][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "111", "eta": "0:08:26", "split": "test_iter", "time_diff": 3.466704}
+[11/23 23:33:11][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "112", "eta": "0:08:24", "split": "test_iter", "time_diff": 3.478065}
+[11/23 23:33:14][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "113", "eta": "0:08:23", "split": "test_iter", "time_diff": 3.498621}
+[11/23 23:33:18][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "114", "eta": "0:08:09", "split": "test_iter", "time_diff": 3.422385}
+[11/23 23:33:21][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "115", "eta": "0:08:04", "split": "test_iter", "time_diff": 3.413758}
+[11/23 23:33:24][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "116", "eta": "0:08:02", "split": "test_iter", "time_diff": 3.421510}
+[11/23 23:33:28][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "117", "eta": "0:08:06", "split": "test_iter", "time_diff": 3.472715}
+[11/23 23:33:31][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "118", "eta": "0:08:04", "split": "test_iter", "time_diff": 3.488025}
+[11/23 23:33:35][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "119", "eta": "0:08:06", "split": "test_iter", "time_diff": 3.525849}
+[11/23 23:33:38][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "120", "eta": "0:08:04", "split": "test_iter", "time_diff": 3.538882}
+[11/23 23:33:42][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "121", "eta": "0:07:53", "split": "test_iter", "time_diff": 3.481952}
+[11/23 23:33:45][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "122", "eta": "0:07:50", "split": "test_iter", "time_diff": 3.482149}
+[11/23 23:33:49][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "123", "eta": "0:07:43", "split": "test_iter", "time_diff": 3.462146}
+[11/23 23:33:52][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "124", "eta": "0:07:32", "split": "test_iter", "time_diff": 3.403552}
+[11/23 23:33:56][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "125", "eta": "0:07:28", "split": "test_iter", "time_diff": 3.394398}
+[11/23 23:33:59][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "126", "eta": "0:07:29", "split": "test_iter", "time_diff": 3.433745}
+[11/23 23:34:03][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "127", "eta": "0:07:27", "split": "test_iter", "time_diff": 3.445640}
+[11/23 23:34:06][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "128", "eta": "0:07:41", "split": "test_iter", "time_diff": 3.578399}
+[11/23 23:34:10][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "129", "eta": "0:07:27", "split": "test_iter", "time_diff": 3.492953}
+[11/23 23:34:13][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "130", "eta": "0:07:12", "split": "test_iter", "time_diff": 3.405001}
+[11/23 23:34:17][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "131", "eta": "0:07:13", "split": "test_iter", "time_diff": 3.438876}
+[11/23 23:34:20][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "132", "eta": "0:07:09", "split": "test_iter", "time_diff": 3.439290}
+[11/23 23:34:23][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "133", "eta": "0:07:05", "split": "test_iter", "time_diff": 3.431329}
+[11/23 23:34:27][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "134", "eta": "0:07:04", "split": "test_iter", "time_diff": 3.453518}
+[11/23 23:34:30][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "135", "eta": "0:07:01", "split": "test_iter", "time_diff": 3.456641}
+[11/23 23:34:37][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "136", "eta": "0:14:08", "split": "test_iter", "time_diff": 7.015617}
+[11/23 23:36:05][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "137", "eta": "2:54:51", "split": "test_iter", "time_diff": 87.430732}
+[11/23 23:37:31][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "138", "eta": "2:51:17", "split": "test_iter", "time_diff": 86.366995}
+[11/23 23:39:00][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "139", "eta": "2:55:24", "split": "test_iter", "time_diff": 89.191931}
+[11/23 23:40:28][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "140", "eta": "2:50:03", "split": "test_iter", "time_diff": 87.213618}
+[11/23 23:41:49][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "141", "eta": "2:38:01", "split": "test_iter", "time_diff": 81.736390}
+[11/23 23:43:14][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "142", "eta": "2:41:54", "split": "test_iter", "time_diff": 84.471640}
+[11/23 23:44:39][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "143", "eta": "2:41:25", "split": "test_iter", "time_diff": 84.960245}
+[11/23 23:46:06][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "144", "eta": "2:45:03", "split": "test_iter", "time_diff": 87.638344}
+[11/23 23:47:30][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "145", "eta": "2:35:12", "split": "test_iter", "time_diff": 83.149704}
+[11/23 23:48:51][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "146", "eta": "2:30:46", "split": "test_iter", "time_diff": 81.503600}
+[11/23 23:50:18][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "147", "eta": "2:40:00", "split": "test_iter", "time_diff": 87.278663}
+[11/23 23:51:39][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "148", "eta": "2:27:21", "split": "test_iter", "time_diff": 81.115174}
+[11/23 23:53:11][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "149", "eta": "2:45:02", "split": "test_iter", "time_diff": 91.692534}
+[11/23 23:54:45][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "150", "eta": "2:47:03", "split": "test_iter", "time_diff": 93.681930}
+[11/23 23:56:14][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "151", "eta": "2:38:19", "split": "test_iter", "time_diff": 89.620315}
+[11/23 23:57:44][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "152", "eta": "2:37:31", "split": "test_iter", "time_diff": 90.014410}
+[11/23 23:59:07][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "153", "eta": "2:23:06", "split": "test_iter", "time_diff": 82.565289}
+[11/24 00:00:32][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "154", "eta": "2:25:10", "split": "test_iter", "time_diff": 84.569211}
+[11/24 00:01:39][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "155", "eta": "1:54:24", "split": "test_iter", "time_diff": 67.303898}
+[11/24 00:01:47][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "156", "eta": "0:14:02", "split": "test_iter", "time_diff": 8.339066}
+[11/24 00:01:59][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "157", "eta": "0:20:00", "split": "test_iter", "time_diff": 12.009484}
+[11/24 00:02:15][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "158", "eta": "0:26:33", "split": "test_iter", "time_diff": 16.095773}
+[11/24 00:02:30][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "159", "eta": "0:23:46", "split": "test_iter", "time_diff": 14.554511}
+[11/24 00:02:49][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "160", "eta": "0:30:41", "split": "test_iter", "time_diff": 18.987849}
+[11/24 00:03:00][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "161", "eta": "0:17:06", "split": "test_iter", "time_diff": 10.691488}
+[11/24 00:03:11][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "162", "eta": "0:18:18", "split": "test_iter", "time_diff": 11.566855}
+[11/24 00:03:27][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "163", "eta": "0:25:09", "split": "test_iter", "time_diff": 16.055797}
+[11/24 00:03:52][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "164", "eta": "0:38:26", "split": "test_iter", "time_diff": 24.801578}
+[11/24 00:04:08][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "165", "eta": "0:24:13", "split": "test_iter", "time_diff": 15.795345}
+[11/24 00:04:15][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "166", "eta": "0:10:24", "split": "test_iter", "time_diff": 6.865449}
+[11/24 00:04:39][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "167", "eta": "0:36:32", "split": "test_iter", "time_diff": 24.364210}
+[11/24 00:04:50][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "168", "eta": "0:16:07", "split": "test_iter", "time_diff": 10.872300}
+[11/24 00:05:09][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "169", "eta": "0:27:17", "split": "test_iter", "time_diff": 18.611373}
+[11/24 00:05:24][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "170", "eta": "0:22:06", "split": "test_iter", "time_diff": 15.250584}
+[11/24 00:05:33][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "171", "eta": "0:13:44", "split": "test_iter", "time_diff": 9.584539}
+[11/24 00:05:52][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "172", "eta": "0:26:26", "split": "test_iter", "time_diff": 18.668878}
+[11/24 00:06:21][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "173", "eta": "0:40:47", "split": "test_iter", "time_diff": 29.135346}
+[11/24 00:06:45][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "174", "eta": "0:32:45", "split": "test_iter", "time_diff": 23.682346}
+[11/24 00:07:34][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "175", "eta": "1:07:17", "split": "test_iter", "time_diff": 49.238718}
+[11/24 00:08:36][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "176", "eta": "1:23:55", "split": "test_iter", "time_diff": 62.171714}
+[11/24 00:09:01][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "177", "eta": "0:32:18", "split": "test_iter", "time_diff": 24.236786}
+[11/24 00:09:21][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "178", "eta": "0:27:28", "split": "test_iter", "time_diff": 20.861274}
+[11/24 00:09:28][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "179", "eta": "0:09:06", "split": "test_iter", "time_diff": 7.010220}
+[11/24 00:09:34][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "180", "eta": "0:07:23", "split": "test_iter", "time_diff": 5.765735}
+[11/24 00:09:41][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "181", "eta": "0:08:49", "split": "test_iter", "time_diff": 6.970401}
+[11/24 00:10:08][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "182", "eta": "0:32:52", "split": "test_iter", "time_diff": 26.297220}
+[11/24 00:10:16][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "183", "eta": "0:10:06", "split": "test_iter", "time_diff": 8.190339}
+[11/24 00:10:38][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "184", "eta": "0:27:39", "split": "test_iter", "time_diff": 22.738259}
+[11/24 00:11:04][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "185", "eta": "0:31:10", "split": "test_iter", "time_diff": 25.985613}
+[11/24 00:11:34][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "186", "eta": "0:34:46", "split": "test_iter", "time_diff": 29.382175}
+[11/24 00:12:02][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "187", "eta": "0:33:22", "split": "test_iter", "time_diff": 28.603683}
+[11/24 00:12:38][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "188", "eta": "0:41:18", "split": "test_iter", "time_diff": 35.913913}
+[11/24 00:13:13][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "189", "eta": "0:38:46", "split": "test_iter", "time_diff": 34.214241}
+[11/24 00:13:28][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "190", "eta": "0:16:43", "split": "test_iter", "time_diff": 14.982879}
+[11/24 00:13:39][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "191", "eta": "0:12:09", "split": "test_iter", "time_diff": 11.056095}
+[11/24 00:13:54][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "192", "eta": "0:17:11", "split": "test_iter", "time_diff": 15.873582}
+[11/24 00:14:09][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "193", "eta": "0:15:56", "split": "test_iter", "time_diff": 14.950532}
+[11/24 00:14:32][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "194", "eta": "0:23:20", "split": "test_iter", "time_diff": 22.223661}
+[11/24 00:14:47][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "195", "eta": "0:15:43", "split": "test_iter", "time_diff": 15.212108}
+[11/24 00:15:16][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "196", "eta": "0:29:26", "split": "test_iter", "time_diff": 28.961360}
+[11/24 00:15:30][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "197", "eta": "0:13:54", "split": "test_iter", "time_diff": 13.900751}
+[11/24 00:15:57][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "198", "eta": "0:26:43", "split": "test_iter", "time_diff": 27.183042}
+[11/24 00:16:13][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "199", "eta": "0:15:16", "split": "test_iter", "time_diff": 15.807656}
+[11/24 00:16:19][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "200", "eta": "0:05:32", "split": "test_iter", "time_diff": 5.838604}
+[11/24 00:16:25][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "201", "eta": "0:05:50", "split": "test_iter", "time_diff": 6.257818}
+[11/24 00:16:42][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "202", "eta": "0:15:16", "split": "test_iter", "time_diff": 16.662550}
+[11/24 00:17:01][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "203", "eta": "0:17:14", "split": "test_iter", "time_diff": 19.158501}
+[11/24 00:17:13][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "204", "eta": "0:10:58", "split": "test_iter", "time_diff": 12.416165}
+[11/24 00:17:35][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "205", "eta": "0:18:48", "split": "test_iter", "time_diff": 21.701458}
+[11/24 00:18:09][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "206", "eta": "0:28:50", "split": "test_iter", "time_diff": 33.927874}
+[11/24 00:18:22][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "207", "eta": "0:10:49", "split": "test_iter", "time_diff": 12.980108}
+[11/24 00:19:37][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "208", "eta": "1:01:29", "split": "test_iter", "time_diff": 75.292658}
+[11/24 00:21:14][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "209", "eta": "1:17:20", "split": "test_iter", "time_diff": 96.685121}
+[11/24 00:22:44][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "210", "eta": "1:10:58", "split": "test_iter", "time_diff": 90.598146}
+[11/24 00:24:11][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "211", "eta": "1:06:12", "split": "test_iter", "time_diff": 86.352945}
+[11/24 00:25:41][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "212", "eta": "1:07:34", "split": "test_iter", "time_diff": 90.101018}
+[11/24 00:27:05][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "213", "eta": "1:02:03", "split": "test_iter", "time_diff": 84.623995}
+[11/24 00:28:31][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "214", "eta": "1:01:30", "split": "test_iter", "time_diff": 85.836264}
+[11/24 00:29:56][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "215", "eta": "0:59:13", "split": "test_iter", "time_diff": 84.602639}
+[11/24 00:31:19][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "216", "eta": "0:56:49", "split": "test_iter", "time_diff": 83.158326}
+[11/24 00:32:32][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "217", "eta": "0:48:56", "split": "test_iter", "time_diff": 73.402121}
+[11/24 00:33:58][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "218", "eta": "0:55:55", "split": "test_iter", "time_diff": 86.041665}
+[11/24 00:35:21][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "219", "eta": "0:52:22", "split": "test_iter", "time_diff": 82.693881}
+[11/24 00:36:41][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "220", "eta": "0:49:16", "split": "test_iter", "time_diff": 79.900516}
+[11/24 00:38:01][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "221", "eta": "0:47:51", "split": "test_iter", "time_diff": 79.756988}
+[11/24 00:39:19][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "222", "eta": "0:45:35", "split": "test_iter", "time_diff": 78.145146}
+[11/24 00:40:44][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "223", "eta": "0:48:03", "split": "test_iter", "time_diff": 84.816812}
+[11/24 00:42:10][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "224", "eta": "0:47:15", "split": "test_iter", "time_diff": 85.926362}
+[11/24 00:43:36][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "225", "eta": "0:45:54", "split": "test_iter", "time_diff": 86.079451}
+[11/24 00:45:02][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "226", "eta": "0:44:43", "split": "test_iter", "time_diff": 86.556145}
+[11/24 00:46:32][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "227", "eta": "0:44:43", "split": "test_iter", "time_diff": 89.462720}
+[11/24 00:47:56][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "228", "eta": "0:40:45", "split": "test_iter", "time_diff": 84.337873}
+[11/24 00:49:23][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "229", "eta": "0:40:32", "split": "test_iter", "time_diff": 86.880576}
+[11/24 00:50:50][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "230", "eta": "0:39:01", "split": "test_iter", "time_diff": 86.708042}
+[11/24 00:52:18][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "231", "eta": "0:38:24", "split": "test_iter", "time_diff": 88.636068}
+[11/24 00:53:43][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "232", "eta": "0:35:11", "split": "test_iter", "time_diff": 84.472726}
+[11/24 00:55:09][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "233", "eta": "0:34:28", "split": "test_iter", "time_diff": 86.177043}
+[11/24 00:56:33][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "234", "eta": "0:32:20", "split": "test_iter", "time_diff": 84.347854}
+[11/24 00:57:53][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "235", "eta": "0:29:16", "split": "test_iter", "time_diff": 79.842695}
+[11/24 00:59:16][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "236", "eta": "0:29:00", "split": "test_iter", "time_diff": 82.869787}
+[11/24 01:00:42][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "237", "eta": "0:28:30", "split": "test_iter", "time_diff": 85.505180}
+[11/24 01:02:01][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "238", "eta": "0:25:05", "split": "test_iter", "time_diff": 79.236517}
+[11/24 01:03:15][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "239", "eta": "0:22:20", "split": "test_iter", "time_diff": 74.497119}
+[11/24 01:04:31][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "240", "eta": "0:21:33", "split": "test_iter", "time_diff": 76.064036}
+[11/24 01:06:02][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "241", "eta": "0:24:06", "split": "test_iter", "time_diff": 90.423760}
+[11/24 01:07:35][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "242", "eta": "0:23:23", "split": "test_iter", "time_diff": 93.559615}
+[11/24 01:09:01][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "243", "eta": "0:19:51", "split": "test_iter", "time_diff": 85.113888}
+[11/24 01:10:25][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "244", "eta": "0:18:22", "split": "test_iter", "time_diff": 84.837128}
+[11/24 01:11:53][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "245", "eta": "0:17:25", "split": "test_iter", "time_diff": 87.091434}
+[11/24 01:13:22][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "246", "eta": "0:16:20", "split": "test_iter", "time_diff": 89.177761}
+[11/24 01:14:49][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "247", "eta": "0:14:31", "split": "test_iter", "time_diff": 87.105898}
+[11/24 01:16:12][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "248", "eta": "0:12:24", "split": "test_iter", "time_diff": 82.728456}
+[11/24 01:17:39][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "249", "eta": "0:11:42", "split": "test_iter", "time_diff": 87.832359}
+[11/24 01:18:59][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "250", "eta": "0:09:17", "split": "test_iter", "time_diff": 79.650149}
+[11/24 01:20:08][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "251", "eta": "0:06:52", "split": "test_iter", "time_diff": 68.681594}
+[11/24 01:21:29][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "252", "eta": "0:06:46", "split": "test_iter", "time_diff": 81.375827}
+[11/24 01:22:59][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "253", "eta": "0:06:00", "split": "test_iter", "time_diff": 90.134155}
+[11/24 01:24:33][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "254", "eta": "0:04:40", "split": "test_iter", "time_diff": 93.625819}
+[11/24 01:26:07][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "255", "eta": "0:03:09", "split": "test_iter", "time_diff": 94.591425}
+[11/24 01:27:24][INFO] slowfast.utils.logging:   93: json_stats: {"cur_iter": "256", "eta": "0:01:16", "split": "test_iter", "time_diff": 76.521479}
+[11/24 01:27:24][INFO] slowfast.utils.logging:   93: json_stats: {"split": "test_final", "top1_acc": "24.91", "top3_acc": "100.00"}
+End slurm job at Thu Nov 24 01:27:26 CST 2022
