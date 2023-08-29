@@ -17,15 +17,8 @@ HID (Hidden Intention Discovery) focuses on discovering hidden intentions when h
   <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/51cloud/HID/blob/main/image/framework.png">
 </picture>
 
-## License
-
-PySlowFast is released under the [Apache 2.0 license](LICENSE).
-
-## Model Zoo and Baselines
-
+## Requirements
 We provide a large set of baseline results and trained models available for download in the PySlowFast [Model Zoo](MODEL_ZOO.md).
-
-## Installation
 
 Please find installation instructions for PyTorch and PySlowFast in [INSTALL.md](INSTALL.md). You may follow the instructions in [DATASET.md](slowfast/datasets/DATASET.md) to prepare the datasets.
 
