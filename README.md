@@ -1,10 +1,7 @@
-# PySlowFast
+# HID
 
-PySlowFast is an open source video understanding codebase from FAIR that provides state-of-the-art video classification models with efficient training. This repository includes implementations of the following methods:
-
-- [SlowFast Networks for Video Recognition](https://arxiv.org/abs/1812.03982)
-- [Non-local Neural Networks](https://arxiv.org/abs/1711.07971)
-- [A Multigrid Method for Efficiently Training Video Models](https://arxiv.org/abs/1912.00998)
+PyTorch implementation of the article [Uncovering the Unseen: Discover Hidden Intentions by
+Micro-Behavior Graph Reasoning].
 
 <div align="center">
   <img src="demo/ava_demo.gif" width="600px"/>
