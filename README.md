@@ -30,4 +30,3 @@ Follow the example in [GETTING_STARTED.md](GETTING_STARTED.md) to start playing 
 
 We offer a range of visualization tools for the train/eval/test processes, model analysis, and for running inference with trained model.
 More information at [Visualization Tools](VISUALIZATION_TOOLS.md).
-
