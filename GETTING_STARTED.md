@@ -1,6 +1,6 @@
-# Getting Started with PySlowFast
+# Getting Started with HID
 
-This document provides a brief intro of launching jobs in PySlowFast for training and testing. Before launching any job, make sure you have properly installed the PySlowFast following the instruction in [README.md](README.md) and you have prepared the dataset following [DATASET.md](slowfast/datasets/DATASET.md) with the correct format.
+This document provides a brief intro of launching jobs in HID for training and testing. Before launching any job, make sure you have properly installed the HID following the instruction in [README.md](README.md) and you have prepared the dataset following [DATASET.md](slowfast/datasets/DATASET.md) with the correct format.
 
 ## Train a Standard Model from Scratch
 
