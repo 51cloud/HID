@@ -1,7 +1,7 @@
 # Dataset Preparation
 
 ## Hidden Intention Dataset
-1. Please download the dataset and annotations from [dataset provider](https://20bn.com/datasets/something-something).
+1. Please download the dataset and annotations from [dataset provider](https://drive.google.com/drive/folders/1Yumk_BocNC7E64NekdPfT0nme5BX66g9?usp=drive_link).
 
 2. Download the *frame list* from the following links: ([train](https://dl.fbaipublicfiles.com/pyslowfast/dataset/ssv2/frame_lists/train.csv), [val](https://dl.fbaipublicfiles.com/pyslowfast/dataset/ssv2/frame_lists/val.csv)).
 
