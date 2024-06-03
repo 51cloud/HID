@@ -1311,49 +1311,14 @@ class ResNet(nn.Module):
                 act_func=cfg.MODEL.HEAD_ACT,
             )
 
-        # self.conv1 = nn.Conv3d(1, 256, kernel_size=(3, 3, 3), padding=1)
-        # self.bn1 = nn.BatchNorm3d(256, eps=1e-3)
-        # self.relu1 = nn.ReLU()
-
-        # self.conv2 = nn.Conv3d(64, 256, kernel_size=(3, 3, 3), padding=1)
-        # self.bn2 = nn.BatchNorm3d(256)
-        # self.relu2 = nn.ReLU()
-
-        # self.conv3 = nn.Conv3d(64, 512, kernel_size=(3, 3, 3), padding=1)
-        # self.bn3 = nn.BatchNorm3d(512)
-        # self.relu3 = nn.ReLU()
-
-        # self.conv4 = nn.Conv3d(512, 1024, kernel_size=(3, 3, 3), padding=1)
-        # self.bn4 = nn.BatchNorm3d(1024)
-        # self.relu4 = nn.ReLU()
-
-        # self.conv5 = nn.Conv3d(256, 2048, kernel_size=(3, 3, 3), padding=1)
-        # self.bn5 = nn.BatchNorm3d(2048)
-        # self.relu5 = nn.ReLU()
-        # encoding
         self.conv = nn.Conv3d(in_channels=2048, out_channels=1, kernel_size=1)
 
         self.projection = nn.Linear(2048, 3, bias=True)
 
         self.dropout = nn.Dropout(cfg.MODEL.DROPOUT_RATE)
 
-        
-
-        # self.pool = nn.AdaptiveAvgPool3d((7, 7))
-
     def forward(self, person_infos, videos, tymode, bboxes=None):
-        # person_infos = {k: v.cuda() for k, v in person_infos.items()}
-        # person_infos[person_id].append(body_images[person_id])
-        # person_infos[person_id].append(gaze_feat[person_id])
-        # person_infos[person_id].append(emotion_feat[person_id])
-        # person_infos[person_id].append(attention_feat[person_id])
-        # person_infos[person_id].append(scene_feat)
         i = 0
-        # body_image = []
-        # gaze_feat = []
-        # emotion_feat = []
-        # attention_feat = []
-        # scene_feat = []
         person_feats = []
         person_ids = []
         # print('person_infos.keys():', len(person_infos.keys()), person_infos.keys())
@@ -1362,57 +1327,23 @@ class ResNet(nn.Module):
             person_ids1 = []
             scene_feat = person_infos['scene_feat']
             scene_feat = scene_feat.permute(0, 2, 1, 3, 4).float().cuda()
-            # scene_feat = F.avg_pool3d(scene_feat, kernel_size=(1, 9, 9), stride=(1, 9, 9))
-            # print('scene_feat:', scene_feat.shape, scene_feat) # torch.Size([1, 2048, 19, 7, 7])
-            # scene_feat = scene_feat.permute((0, 2, 3, 4, 1))
-            # print('projection_scene_feat:', scene_feat.shape, scene_feat)  # torch.Size([1, 34, 7, 7, 2048])
             scene_feat = [scene_feat,] 
             scene_feat = self.head(scene_feat)
-            # print('scene_person_feat:', person_feat.shape, person_feat)  # torch.Size([1, 36])
             person_feats1.append(scene_feat)
-            
             person_ids1.append(int('-1'))
             return person_feats1, person_ids1
         else:
             i = 0
             for person_id in person_infos.keys():
-                # print('person_id:', person_id)
-                # print('person_infos[person_id][0].shape', person_infos[person_id][0].shape)  # person_infos[person_id][0].shape torch.Size([8, 3, 8, 224, 224])
-                # print('person_infos[person_id][1].shape', person_infos[person_id][1].shape)  # person_infos[person_id][1].shape torch.Size([8, 8, 1, 64, 64])
-                # print('person_infos[person_id][2].shape', person_infos[person_id][2].shape)  # person_infos[person_id][2].shape torch.Size([8, 8, 1, 64, 64])
-                # print('person_infos[person_id][3].shape', person_infos[person_id][3].shape)  # person_infos[person_id][3].shape torch.Size([8, 8, 1, 64, 64])
-                # print('person_infos[person_id][4].shape', person_infos[person_id][4].shape)  # person_infos[person_id][4].shape torch.Size([8, 8, 1, 64, 64])
-                # body_image.append(person_infos[person_id][0])
-                # gaze_feat.append(person_infos[person_id][1])
-                # emotion_feat.append(person_infos[person_id][2])
-                # attention_feat.append(person_infos[person_id][3])
-                # scene_feat.append(person_infos[person_id][4])
-
-                # print(body_image)
-                # print(gaze_feat)
-                # print(emotion_feat)
-                # print(attention_feat)
-                # print(scene_feat)
-
-                # print('1:', torch.cuda.memory_allocated(), torch.cuda.memory_reserved())  # 4261336576 9915334656
-
                 body_image = person_infos[person_id][0].cuda()
                 gaze_feat = person_infos[person_id][1].cuda()
                 emotion_feat = person_infos[person_id][2].cuda()
                 attention_feat = person_infos[person_id][3].cuda()
                 scene_feat = person_infos[person_id][4].cuda()
 
-                # print('gaze2.shape:', gaze_feat.shape)
-                # print('emotion_feat2.shape:', emotion_feat.shape)
-                # print('attention_feat2.shape:', attention_feat.shape)
-                # print('scene_feat2.shape:', scene_feat.shape)
-
-                # print('2:', torch.cuda.memory_allocated(), torch.cuda.memory_reserved())  # 4272018944 9915334656
-
                 # x1 = x[0]
                 # x1 = x1.type(torch.cuda.FloatTensor)
                 body_image = body_image.float()
-                # print('body_image:', body_image.shape)  # body_image: torch.Size([1, 3, 8, 224, 224])
                 x = [body_image, ]
                 x = self.s1(x)  # x1.size torch.Size([8, 64, 8, 56, 56])
                 x = self.s2(x)  # x2.size torch.Size([8, 256, 8, 56, 56])
@@ -1424,100 +1355,37 @@ class ResNet(nn.Module):
                 x = self.s4(x)  # [8,1024,8,14,14]
                 x = self.s5(x)  # [8,2048,8,7,7]
 
-                # print('x:', x)
-                # print('x.shape:', x[0].shape)
-                # x = self.conv(x[0])
-                # x = self.bn(x)
-                # x = self.relu(x)
-                # 目标形状 (1, 1, 8, 64, 64)
-                # target_shape = (1, 1, 8, 64, 64)
-
-                # # 计算插值比例
-                # scale_factor = tuple(float(s) / float(sz) for s, sz in zip(target_shape, x.shape[-2:]))
-
-                # 执行插值操作，沿着空间维度进行插值
-                # x = x.squeeze(0)
-                # x = F.interpolate(x, size=(8, 64, 64), mode='trilinear')
-                # x = [x,]
-
-                # print('3:', torch.cuda.memory_allocated(), torch.cuda.memory_reserved())  # 5033718272 9915334656
-
-                # print('x1:', x)  # x: 1
-                # print('x1.shape:', x[0].shape)
-                # print('gaze_feat1:', gaze_feat)
-                # print('gaze_feat1.shape:', gaze_feat.shape)  # gaze_feat1.shape: torch.Size([1, 8, 1, 64, 64])
-                # print('emotion_feat1:', emotion_feat)
-                # print('emotion_feat1.shape:', emotion_feat.shape)
-                # print('attention_feat1:', attention_feat)
-                # print('attention_feat1.shape:', attention_feat.shape)
-                # print('scene_feat1:', scene_feat)
-                # print('scene_feat1.shape:', scene_feat.shape)
-
                 gaze_feat = gaze_feat.permute(0, 2, 1, 3, 4).float()
-                # gaze_feat = self.pool(gaze_feat)
                 gaze_feat = F.avg_pool3d(gaze_feat, kernel_size=(1, 9, 9), stride=(1, 9, 9))
-
 
                 emotion_feat = emotion_feat.permute(0, 2, 1, 3, 4).float()
                 emotion_feat = F.avg_pool3d(emotion_feat, kernel_size=(1, 9, 9), stride=(1, 9, 9))
-
 
                 attention_feat = attention_feat.permute(0, 2, 1, 3, 4).float()
                 attention_feat = F.avg_pool3d(attention_feat, kernel_size=(1, 9, 9), stride=(1, 9, 9))
 
                 scene_feat = scene_feat.permute(0, 2, 1, 3, 4).float()
-                # print('scene_feat.shape', scene_feat.shape)
                 scene_feat = F.avg_pool3d(scene_feat, kernel_size=(1, 9, 9), stride=(1, 9, 9))
-                # print('scene_feat1.shape', scene_feat.shape)
 
                 x = x[0]
 
                 build_graph = self.Build_Graph
                 cl, cl_edge = build_graph(x, gaze_feat, emotion_feat, attention_feat, scene_feat)
-                # # print('cl:', cl)
-
-                # # print('13:', torch.cuda.memory_allocated(), torch.cuda.memory_reserved())  # 7020405760 9915334656
 
                 feature_tensors = [x, gaze_feat, emotion_feat, attention_feat, scene_feat]
 
-                # print('x', x.shape, x)
-                # print('gaze_feat', gaze_feat.shape, gaze_feat)
-                # print('emotion_feat', emotion_feat.shape, emotion_feat)
-                # print('attention_feat', attention_feat.shape, attention_feat)
-                # print('scene_feat', scene_feat.shape, scene_feat)
-
-                # feature_fusion = torch.stack(feature_tensors)
-                # feature_fusion = torch.mean(feature_fusion, dim=0)
-
-                # # print('14:', torch.cuda.memory_allocated(), torch.cuda.memory_reserved())  # 7020405760 9915334656
-                # # print('feature_tensors:', feature_tensors)
-
                 feature_fusion = torch.sum(cl.unsqueeze(-2).unsqueeze(-1).unsqueeze(-1) * torch.stack(feature_tensors, dim=1), dim=1)
 
-                
-                # print('feature_fusion', feature_fusion.shape, feature_fusion)  # torch.Size([1, 2048, 35, 7, 7])
-                
                 person_feat = [feature_fusion, ]
 
-                # print('weighted_sum:', weighted_sum)
-                # person_feat = [weighted_sum, ]
-                # print('person_feat----:', person_feat.shape, person_feat)
-
-
                 person_feat = self.head(person_feat)
-
-                # print('16:', torch.cuda.memory_allocated(), torch.cuda.memory_reserved())  # 7039684096 9915334656
-                # print('person_feat2:', person_feat)
                 person_feats.append(person_feat)
-                # print('person_feat3:', person_feat)
                 person_ids.append(person_id)
                 i += 1
+                
                 # Clear intermediate variables and GPU cache
                 del body_image, gaze_feat, emotion_feat, attention_feat, scene_feat, x#, cl, cl_edge, feature_tensors, weighted_sum, person_feat
-                # print('17:', torch.cuda.memory_allocated(), torch.cuda.memory_reserved())  # 7038044672 9915334656
                 gc.collect()
                 torch.cuda.empty_cache()
-
-            # print('18:', torch.cuda.memory_allocated(), torch.cuda.memory_reserved())  # 7038044672 7495221248
 
             return person_feats, person_ids
