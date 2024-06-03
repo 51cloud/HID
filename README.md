@@ -1,4 +1,4 @@
-# Hiddden Intention Discovery (HID)
+# Hidden Intention Discovery (HID)
 
 PyTorch implementation of the article Uncovering the Unseen: Discover Hidden Intentions by Micro-Behavior Graph Reasoning. This work uses [`slowfast`](https://github.com/facebookresearch/SlowFast) as a baseline.
 
@@ -8,7 +8,7 @@ PyTorch implementation of the article Uncovering the Unseen: Discover Hidden Int
 
 ## Introduction
 
-HID (Hidden Intention Discovery) focuses on discovering hidden intentions when humans try to hide their intentions for abnormal behavior. HID presents a unique challenge in that hidden intentions lack the obvious visual representations to distinguish them from normal intentions. We find that the difference between hidden and normal intentions can be reasoned from multiple microbehaviors, such as gaze, attention, and facial expressions. Therefore, we first discover the relationship between micro-behavior and hidden intentions and use multiple micro-behavior to discover hidden intentions.
+HID (Hidden Intention Discovery) focuses on discovering hidden intentions when humans try to hide their intentions for abnormal behavior. HID presents a unique challenge in that hidden intentions lack the obvious visual representations to distinguish them from normal intentions. We find that the difference between hidden and normal intentions can be reasoned from multiple micro-behaviors, such as gaze, attention, and facial expressions. Therefore, we first discover the relationship between micro-behaviors and hidden intentions and use multiple micro-behaviors to discover hidden intentions.
 
 ## Framework
  <picture>
@@ -18,13 +18,15 @@ HID (Hidden Intention Discovery) focuses on discovering hidden intentions when h
 </picture>
 
 ## Requirements
-We provide a large set of baseline results and trained models available for download in the PySlowFast [Model Zoo](MODEL_ZOO.md).
+We provide a large set of baseline results and trained models available for download in the HID [Model Zoo](MODEL_ZOO.md).
 
-Please find installation instructions for PyTorch and PySlowFast in [INSTALL.md](INSTALL.md). You may follow the instructions in [DATASET.md](slowfast/datasets/DATASET.md) to prepare the datasets.
+Please find installation instructions for HID in [INSTALL.md](INSTALL.md). 
+
+We will publish the HID dataset as soon.
 
 ## Quick Start
 
-Follow the example in [GETTING_STARTED.md](GETTING_STARTED.md) to start playing video models with PySlowFast.
+Follow the example in [GETTING_STARTED.md](GETTING_STARTED.md) to start playing video models with HID.
 
 ## Visualization Tools
 
