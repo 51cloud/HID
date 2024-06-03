@@ -108,30 +108,17 @@ class Kinetics(torch.utils.data.Dataset):
 
         with g_pathmgr.open(path_to_file, "r") as f:
             for clip_idx, path_label in enumerate(f.read().splitlines()):
-                # print('path_label:', path_label)
+
                 assert (len(path_label.split(self.cfg.DATA.PATH_LABEL_SEPARATOR)) == 2)
                 path, label = path_label.split(
                     self.cfg.DATA.PATH_LABEL_SEPARATOR
                 )
-                # path = '/home/public/Hidden_Intention/Zhouz/dataset/HID/Before_Stealing/Before_Stealing218.mp4'
-                # text_path = '/home/public/Hidden_Intention/Zhouz/dataset/HID/track_results/HID/Before_Stealing001/Before_Stealing001.h5'
-                # print('path:', path)
+
                 file_name = path.split('.')[0].split('/')[-1]
                 root_path = path.split('HID')[0]
                 text_root_path = root_path + 'HID/track_results/HID/'
                 text_path = text_root_path + file_name + '/' + file_name + '.h5'
-                # print('text_path:', text_path)
 
-                
-                # ret, frame = cap.read()
-                # 获取帧的尺寸
-                # height, width, channels = frame.shape
-
-                # 打印尺寸
-                # print(f"Frame dimensions: Width={width}, Height={height}, Channels={channels}")
-                # print(aaa)
-                # print('path:', path) # /public/home/jiaxm/perl5/datasets/N-UCLA/view1/v01_s10_e05_a11.avi
-                # print("self._num_clips:",self._num_clips) # 30
                 if self.mode in ["train"]:
                     for idx in range(self._num_clips):
                         self._path_to_videos.append(
@@ -256,14 +243,6 @@ class Kinetics(torch.utils.data.Dataset):
 
             cap = cv2.VideoCapture(video1)
             video_frame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-            # cap = cv2.VideoCapture(video1)
-            # ret, frame = cap.read()
-            # # 获取帧的尺寸
-            # height, width, channels = frame.shape
-            #
-            # # 打印尺寸
-            # print(f"Frame dimensions: Width={width}, Height={height}, Channels={channels}")
-
             videos.append(video1)
 
             try:
@@ -293,15 +272,11 @@ class Kinetics(torch.utils.data.Dataset):
                 continue
 
             # Decode video. Meta info is used to perform selective decoding.
-            # print('self._video_meta[]:', self._video_meta)
-            # print('self._video_meta[].len:', len(self._video_meta))
 
             h5_path = self._texts[index]
-            # print('h5_path:', h5_path)
-            # 使用示例
+
             data_dict = self.read_h5_file(h5_path)
-            # print('data_dict.keys():', data_dict.keys())
-            # print('len(data_dict.keys()):', len(data_dict.keys()))
+
             frame_len = len(data_dict.keys()) 
 
             if frame_len < 8:
@@ -326,50 +301,30 @@ class Kinetics(torch.utils.data.Dataset):
                 max_spatial_scale=min_scale,
 
             )
-            # print('frames1:', frames1, frames1.shape)  # torch.Size([8, 240, 320, 3])
 
-            # h5_path = '/home/zhouzhuo/project/HAR/info_results/stealing079.h5'
-            # h5_path = '/home/public/Hidden_Intention/Zhouz/dataset/HID/track_results/HID/Before_Stealing218/Before_Stealing218.h5'
-            
-            # print('data_dict:', data_dict.keys(), data_dict)
             frame_count = 0
             gaze_feat = []
             emotion_feat = []
             attention_feat = []
             scene_feat = np.empty((frame_len, 2048, 64, 64), dtype=np.uint8)
-            # body_image = np.random.rand(8, 64, 64, 3)
             person_infos = {}
             body_images = {}
             gaze_feat = {}
             emotion_feat = {}
             attention_feat = {}
             person_infoss = {}
-            # print('data_dict.keys()', len(data_dict.keys()), data_dict.keys())
-            # print(aaa)
             
             for i in range(frame_len):
-                # print('i:', i)
-                # print('data_dict[str(i)].keys():', len(data_dict[str(frame_count)].keys()), data_dict[str(frame_count)].keys())
                 frame_group = data_dict[str(frame_count)]
                 for person_id, attributes in frame_group.items():
-                    # print('person_id:', person_id)
-                    # print('attributes:', attributes)
-                    
                     if person_id == 'face_bboxes':
-                        # print('attributes',attributes)
-                        # scene_feat[i, :, :, :] = attributes
                         continue
                     elif person_id == 'scene_feat':
                         attributes = np.array(attributes)
-                        # print('attributes:', attributes)
                         scene_feat[i, :, :, :] = attributes
 
                     elif isinstance(attributes, dict):
                         if person_id not in body_images.keys():
-                            # body_images[person_id] = np.full((3, frame_len, 224, 224), 0)
-                            # gaze_feat[person_id] = np.full((frame_len, 2048, 64, 64), 0)
-                            # emotion_feat[person_id] = np.full((frame_len, 2048, 64, 64), 0) 
-                            # attention_feat[person_id] = np.full((frame_len, 2048, 64, 64), 0)
                             body_images[person_id] = np.empty((3, frame_len, 224, 224), dtype=np.uint8)
                             gaze_feat[person_id] = np.empty((frame_len, 2048, 64, 64), dtype=np.uint8)
                             emotion_feat[person_id] = np.empty((frame_len, 2048, 64, 64), dtype=np.uint8) 
@@ -378,7 +333,6 @@ class Kinetics(torch.utils.data.Dataset):
                                 person_infos[person_id] = []
                         person_group = frame_group[person_id]
                         for attr_name, attr_value in attributes.items():
-                            
                             if attr_name == 'body_bbox':
                                 # print('attr_value1:', attr_value)
                                 x1, y1, w, h = attr_value
@@ -392,12 +346,7 @@ class Kinetics(torch.utils.data.Dataset):
                                     h = 3
                                 frame = frames1[i].numpy()
                                 cropped_frame = frame[int(y1):int(y1 + h), int(x1):int(x1 + w)]
-                                # print('cropped_frame2.shape:', cropped_frame.shape)  # cropped_frame2.shape: (366, 226, 3)
-                                # print('int(y1),int(y1+h),int(x1),int(x1+w):', int(y1),int(y1+h),int(x1),int(x1+w))
-                                # print('cropped_frame.shape:', cropped_frame.shape)
-                                # print()
-                                # # 调整到目标尺寸，例如64x64
-                                # cropped_frame = cv2.resize(cropped_frame, (64, 64))
+
                                 if cropped_frame is None:
                                     logger.warning(
                                         "Failed to decode video1 idx {} from {}; trial {}".format(
@@ -419,10 +368,7 @@ class Kinetics(torch.utils.data.Dataset):
                                     cropped_frame, mean, std
                                 )
                                 cropped_frame = cropped_frame.unsqueeze(0)
-                                # print('cropped_frame3.shape:', cropped_frame.shape)  # torch.Size([1, 64, 64, 3])
                                 cropped_frame = cropped_frame.permute(3, 0, 1, 2)
-                                # print('cropped_frame.shape:', cropped_frame.shape)  # torch.Size([3, 1, 64, 64])
-
                                 cropped_frame = utils.spatial_sampling(
                                     cropped_frame,
                                     spatial_idx=spatial_sample_index,
@@ -432,53 +378,31 @@ class Kinetics(torch.utils.data.Dataset):
                                     random_horizontal_flip=self.cfg.DATA.RANDOM_FLIP,
                                     inverse_uniform_sampling=self.cfg.DATA.INV_UNIFORM_SAMPLE,
                                 )
-                                # print('cropped_frame1.shape:', cropped_frame.shape)  # torch.Size([3, 1, 224, 224])
-                                # print('frames1:', frames1, frames1.shape)  #  torch.Size([3, 1, 224, 224])
-                                # cropped_frame = cv2.resize(cropped_frame, (64, 64))
-                                # 使用 squeeze 方法移除第 1 维度
                                 cropped_frame = cropped_frame.squeeze(1)
-                                # cropped_frame = utils.pack_pathway_output(self.cfg, cropped_frame)  # original
-                                # video , stable video , other_video
                                 body_images[person_id][:, i, :, :] = cropped_frame
 
                             if attr_name == 'gaze_feat':
-                                
                                 gaze_feat[person_id][i, :, :, :] = attr_value
-                                
                             if attr_name == 'emotion_feat':
-                               
                                 emotion_feat[person_id][i, :, :, :] = attr_value
                             if attr_name == 'attention_feat':
-                                
                                 attention_feat[person_id][i, :, :, :] = attr_value
                 if (frame_count + frame_rate) < video_frame:
                     frame_count += frame_rate
-
-            # print('body_images:', body_images)
-            # print('gaze_feat:', gaze_feat)
-            # print('emotion_feat:', emotion_feat)
-            # print('attention_feat:', attention_feat)
             if len(person_infos.keys()) == 0:
                 person_infos['scene_feat'] = scene_feat
             else:
                 for person_id in person_infos.keys():
-                    # print('body_images[person_id],shape:', body_images[person_id].shape)
                     person_infos[person_id].append(body_images[person_id])
                     person_infos[person_id].append(gaze_feat[person_id])
                     person_infos[person_id].append(emotion_feat[person_id])
                     person_infos[person_id].append(attention_feat[person_id])
                     person_infos[person_id].append(scene_feat)
-            
-            # person_infoss = [person_infos,]
-            # print('person_infos', person_infos, len(person_infos))
 
             if len(person_infos) > 3:
-                # 获取字典的前 8 个键
                 keys_to_keep = list(person_infos.keys())[:3]
-
-                # 创建一个新的字典，只包含前 8 个键及其对应的值
                 person_infos = {key: person_infos[key] for key in keys_to_keep}
-            # print('person_infos:', person_infos)
+
             return person_infos, videos, label, index, {}
         else:
             raise RuntimeError(
@@ -596,10 +520,6 @@ class Kinetics(torch.utils.data.Dataset):
                     h = 3
                 frame = frames[i].numpy()
                 cropped_frame = frame[int(y1):int(y1 + h), int(x1):int(x1 + w)]
-                # print('int(y1),int(y1+h),int(x1),int(x1+w):', int(y1),int(y1+h),int(x1),int(x1+w))
-                # print('cropped_frame.shape:', cropped_frame.shape)
-                # print()
-                # # 调整到目标尺寸，例如64x64
                 cropped_frame = cv2.resize(cropped_frame, (64, 64))
                 body_frame[i] = cropped_frame
             body_video[person_id] = body_frame
@@ -612,35 +532,21 @@ class Kinetics(torch.utils.data.Dataset):
         threshold_upper = 1.0e+5
         frame_rate = 8
         with h5py.File(filepath, 'r') as f:
-            # print('f.key():', f.keys())
             frame_len = len(f.keys())
-            # frame_numbers = (frame_len - 1) / 16
-            # frame_id = 0
             for frame_number in f.keys():
-                # print('frame_number2', frame_number)
                 if (int(frame_number) + frame_rate) % frame_rate == 0:
                     scene_feat = np.random.randint(0.5, 4, size=(1, 2048, 64, 64), dtype=np.uint8)
-                    # scene_feat = cp.random.randint(100, 256, size=(1, 2048, 64, 64), dtype=cp.uint8).get()
-                    # print('frame_number------', frame_number)
                     frame_group = f[frame_number]
-                    # print('frame_group', frame_group.keys())
                     frame_data = defaultdict(lambda: defaultdict(dict))
                     person_data = {}
                     person_data['scene_feat'] =  np.random.randint(0.5, 4, size=(1, 2048, 64, 64), dtype=np.uint8)
                     person_data['gaze_feat'] =  np.random.randint(0.5, 4, size=(1, 2048, 64, 64), dtype=np.uint8)
                     person_data['emotion_feat'] =  np.random.randint(0.5, 4, size=(1, 2048, 64, 64), dtype=np.uint8)
                     person_data['attention_feat'] =  np.random.randint(0.5, 4, size=(1, 2048, 64, 64), dtype=np.uint8)
-                    # person_data['gaze_feat'] = cp.random.randint(100, 256, size=(1, 2048, 64, 64), dtype=cp.uint8).get()
-                    # person_data['emotion_feat'] = cp.random.randint(100, 256, size=(1, 2048, 64, 64), dtype=cp.uint8).get()
-                    # person_data['attention_feat'] = cp.random.randint(100, 256, size=(1, 2048, 64, 64), dtype=cp.uint8).get()
-                    # print('person_data', person_data)
                     for person_id in frame_group.keys():
-                        # print('frame_group.keys()', frame_group.keys())  # frame_group.keys() <KeysViewHDF5 ['613', 'face_bboxes']>
                         person_group = frame_group[person_id]
-                        # print('person_group', person_group)  # person_group <HDF5 group "/0/613" (8 members)>
                         
                         if person_id == 'scene_feat':
-                            # print('person_group:', np.array(person_group))
                             if isinstance(person_group, h5py.Dataset):
                                 scene_feat = np.array(person_group)
                                 nan_indices = np.where(np.isnan(scene_feat))
@@ -658,8 +564,6 @@ class Kinetics(torch.utils.data.Dataset):
                                 if len(upper_indices[0]) > 0:
                                     scene_feat[upper_indices] = np.random.uniform(0.5, 4, size=len(upper_indices[0]))
 
-                                # print('scene_feat1:', scene_feat)
-                                # print('scene_feat1.shape:', scene_feat.shape)
                                 scene_feat = scene_feat
                                 
                         elif person_id == 'face_bboxes':
@@ -669,108 +573,64 @@ class Kinetics(torch.utils.data.Dataset):
                                 lower_indices = np.where(abs(scene_feat) <= threshold_lower)
                                 upper_indices = np.where(abs(scene_feat) >= threshold_upper)
                                 
-                                # 替换异常值为随机数
                                 if len(nan_indices[0]) > 0:
                                     scene_feat[nan_indices] = np.random.uniform(0.5, 4, size=len(nan_indices[0]))
                                 
-                                # 替换异常值为随机数
                                 if len(lower_indices[0]) > 0:
                                     scene_feat[lower_indices] = np.random.uniform(0.5, 4, size=len(lower_indices[0]))
                                 
                                 if len(upper_indices[0]) > 0:
                                     scene_feat[upper_indices] = np.random.uniform(0.5, 4, size=len(upper_indices[0]))
-
-                                # print('attr_name1:', attr_name)
-                                # print('attr_value1:', attr_value)
-                                # scene_feat = scene_feat.repeat(2048, axis=1)
-                                # print('scene_feat:', scene_feat)
-                                # print('scene_feat:', scene_feat)
-                                # print('scene_feat.shape:', scene_feat.shape)
-                                    
                                 scene_feat = scene_feat
                         else:
                             for attr_name, attr_value in person_group.items():
-                                # print('attr_name2', attr_name)  
-                                # print('attr_value2', np.array(attr_value).shape, np.array(attr_value)) # (1, 1, 64, 64)
                                 if attr_name == 'gaze_feature':
-                                    # print('attr_name:', attr_name)
-                                    # print('attr_value:', attr_value)
-                                    # print('attr_value.shape:', attr_value.shape)
                                     attr_name = 'gaze_feat'
                                     attr_value = np.array(attr_value)
-                                # 获取符合条件的异常值的索引
                                     nan_indices = np.where(np.isnan(attr_value))
                                     lower_indices = np.where(abs(attr_value) <= threshold_lower)
                                     upper_indices = np.where(abs(attr_value) >= threshold_upper)
                                     
-                                    # 替换异常值为随机数
                                     if len(nan_indices[0]) > 0:
                                         attr_value[nan_indices] = np.random.uniform(0.5, 4, size=len(nan_indices[0]))
                                     
-                                    # 替换异常值为随机数
                                     if len(lower_indices[0]) > 0:
                                         attr_value[lower_indices] = np.random.uniform(0.5, 4, size=len(lower_indices[0]))
                                     
                                     if len(upper_indices[0]) > 0:
                                         attr_value[upper_indices] = np.random.uniform(0.5, 4, size=len(upper_indices[0]))
         
-                                    # print('attr_name1:', attr_name)
                                     if attr_value.shape == (1, 1, 14, 14):
                                         attr_value = np.pad(attr_value, ((0, 0), (0, 0), (25, 25), (25, 25)), mode='constant', constant_values=0)
                                     elif attr_value.shape == (1, 1, 64, 64):
                                         attr_value = attr_value
                                     else:
                                         attr_value = np.random.randint(100, 256, size=(1, 1, 64, 64), dtype=np.uint8)
-                                    # print('attr_value1:', attr_value)
-                                    # attr_value = attr_value.repeat(2048, axis=1)
-                                    # print('attr_name1:', attr_name)
-                                    # print('attr_value1:', attr_value)
-                                    # print('attr_value1.shape:', attr_value.shape)
                                     
                                     person_data[attr_name][:,0,:,:] = attr_value
                                     
                                 if attr_name == 'emotion_feat':
-                                    # print('attr_name:', attr_name)
-                                    # print('attr_value:', attr_value)
-                                    # print('attr_value.shape:', attr_value.shape)
-
-                                    # new_attr_value = np.copy(attr_value)
                                     attr_value = np.array(attr_value)
-                                    # 获取符合条件的异常值的索引
                                     nan_indices = np.where(np.isnan(attr_value))
                                     lower_indices = np.where(abs(attr_value) <= threshold_lower)
                                     upper_indices = np.where(abs(attr_value) >= threshold_upper)
                                     
-                                    # 替换异常值为随机数
                                     if len(nan_indices[0]) > 0:
                                         attr_value[nan_indices] = np.random.uniform(0.5, 4, size=len(nan_indices[0]))
                                     
-                                    # 替换异常值为随机数
                                     if len(lower_indices[0]) > 0:
                                         attr_value[lower_indices] = np.random.uniform(0.5, 4, size=len(lower_indices[0]))
                                     
                                     if len(upper_indices[0]) > 0:
                                         attr_value[upper_indices] = np.random.uniform(0.5, 4, size=len(upper_indices[0]))
-        
-                                    # print('attr_name1:', attr_name)
-                                    # print('attr_value1:', attr_value)
-                                    # attr_value = attr_value.repeat(2048, axis=1)
-                                    # print('attr_name1:', attr_name)
-                                    # print('attr_value1:', attr_value)
-                                    # print('attr_value1.shape:', attr_value.shape)
                                     
                                     person_data[attr_name][:,0,:,:] = attr_value
                                 if attr_name == 'attention_feat':
-                                    # print('attr_name:', attr_name)
-                                    # print('attr_value:', attr_value)
-                                    # print('attr_value.shape:', attr_value.shape)
-                                    # 获取符合条件的异常值的索引
                                     attr_value = np.array(attr_value)
                                     nan_indices = np.where(np.isnan(attr_value))
                                     lower_indices = np.where(abs(attr_value) <= threshold_lower)
                                     upper_indices = np.where(abs(attr_value) >= threshold_upper)
                                     
-                                    # 替换异常值为随机数
                                     if len(nan_indices[0]) > 0:
                                         attr_value[nan_indices] = np.random.uniform(0.5, 4, size=len(nan_indices[0]))
 
@@ -779,10 +639,6 @@ class Kinetics(torch.utils.data.Dataset):
                                     
                                     if len(upper_indices[0]) > 0:
                                         attr_value[upper_indices] = np.random.uniform(0.5, 4, size=len(upper_indices[0]))
-                                    # attr_value = attr_value.repeat(2048, axis=1)
-                                    # print('attr_name1:', attr_name)
-                                    # print('attr_value1:', attr_value)
-                                    # print('attr_value1.shape:', attr_value.shape)
                                     
                                     person_data[attr_name][:,0,:,:] = attr_value
                                 
@@ -793,6 +649,4 @@ class Kinetics(torch.utils.data.Dataset):
 
                     data_dict[frame_number] = frame_data
                     data_dict[frame_number]['scene_feat'] = scene_feat
-                    # frame_id += 16
-        # print('data_dict:', data_dict)
         return data_dict
