@@ -33,11 +33,11 @@ Please follow PyTorch official instructions to install from source:
 git clone --recursive https://github.com/51cloud/HID.git
 ```
 
-## PySlowFast
+## HID
 
-Clone the PySlowFast Video Understanding repository.
+Clone the HID repository.
 ```
-git clone https://github.com/51cloud/HID/slowfast
+git clone https://github.com/51cloud/HID/
 ```
 
 Add this repository to $PYTHONPATH.
@@ -45,14 +45,16 @@ Add this repository to $PYTHONPATH.
 export PYTHONPATH=/path/to/HID/slowfast:$PYTHONPATH
 ```
 
-### Build PySlowFast
+### Build HID
 
 After having the above dependencies, run:
 ```
-git clone https://github.com/51cloud/HID/slowfast
-cd SlowFast
+git clone https://github.com/51cloud/HID
+cd HID
 python setup.py build develop
 ```
+### Download pretrained file
+
 
 Now the installation is finished, run the pipeline with:
 ```
