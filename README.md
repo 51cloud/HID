@@ -1,6 +1,6 @@
 # HID
 
-PyTorch implementation of the article Uncovering the Unseen: Discover Hidden Intentions by Micro-Behavior Graph Reasoning. This work uses slowfast as a baseline.
+PyTorch implementation of the article Uncovering the Unseen: Discover Hidden Intentions by Micro-Behavior Graph Reasoning. This work uses slowfast[`link`](https://github.com/facebookresearch/SlowFast) as a baseline.
 
 <div align="center">
   <img src="demo/ava_demo.gif" width="600px"/>
