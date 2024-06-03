@@ -53,8 +53,9 @@ git clone https://github.com/51cloud/HID
 cd HID
 python setup.py build develop
 ```
-### Download pretrained file
-
+## Download pretrained file
+cd pretrained
+wget https://dl.fbaipublicfiles.com/pyslowfast/model_zoo/kinetics400/SLOWONLY_8x8_R50.pkl
 
 Now the installation is finished, run the pipeline with:
 ```
