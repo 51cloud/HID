@@ -30,3 +30,21 @@ Follow the example in [GETTING_STARTED.md](GETTING_STARTED.md) to start playing 
 
 We offer a range of visualization tools for the train/eval/test processes, model analysis, and for running inference with trained model.
 More information at [Visualization Tools](VISUALIZATION_TOOLS.md).
+
+## Citing PySlowFast
+If you find HID useful in your research, please use the following BibTeX entry for citation.
+```BibTeX
+@inproceedings{ZhouLXWZ23,
+  author       = {Zhuo Zhou and
+                  Wenxuan Liu and
+                  Danni Xu and
+                  Zheng Wang and
+                  Jian Zhao},
+  title        = {Uncovering the Unseen: Discover Hidden Intentions by Micro-Behavior
+                  Graph Reasoning},
+  booktitle    = {Proceedings of the 31st {ACM} International Conference on Multimedia,
+                  {MM} 2023, Ottawa, ON, Canada, 29 October 2023- 3 November 2023},
+  pages        = {6623--6633},
+  publisher    = {{ACM}},
+  year         = {2023},
+}
