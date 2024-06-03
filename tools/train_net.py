@@ -68,47 +68,16 @@ def train_epoch(
     labels_array = []
 
     for cur_iter, (person_infos, videos, labels, _, meta) in enumerate(train_loader):
-        # 打印显存使用情况
+        
         device_id = 0
         device = torch.cuda.get_device_properties(device_id)
-        # print(device.total_memory, torch.cuda.memory_allocated(), torch.cuda.memory_reserved())
-        # print('labels.shape', labels, labels.shape)  # labels.shape tensor([0, 2, 1, 2, 2, 2, 0, 0]) torch.Size([8])
-        # print('videos.shape', videos, len(videos))
-        # Transfer the data to the current GPU device.
-        # print('person_infos:', person_infos)
-        # if cfg.NUM_GPUS:
-        #
-        #     if isinstance(inputs, (list,)):
-        #         for i in range(len(inputs)):
-        #             inputs[i] = inputs[i].cuda(non_blocking=True)
-        #     else:
-        #         inputs = inputs.cuda(non_blocking=True)
-        #     labels = labels.cuda()
-        #     for key, val in meta.items():
-        #         if isinstance(val, (list,)):
-        #             for i in range(len(val)):
-        #                 val[i] = val[i].cuda(non_blocking=True)
-        #         else:
-        #             meta[key] = val.cuda(non_blocking=True)
 
         # Update the learning rate.
-        # person_infos = person_infoss[0]
         lr = optim.get_epoch_lr(cur_epoch + float(cur_iter) / data_size, cfg)
         optim.set_lr(optimizer, lr)
-        # print('person_infos:', person_infos)
-        # inputs1 = [inputs[0], ]  # original - anchor
-        # print('videos:', videos)  # [['/public/home/zhouz/perl5/dataset/Drone/train/S4_walking_toLeft_sideView_HD.mp4', '/public/home/zhouz/perl5/dataset/Drone/train/S5_hittingStick_toRight_HD.mp4', '/public/home/zhouz/perl5/dataset/Drone/train/S2_jogging_frontView_HD.mp4', '/public/home/zhouz/perl5/dataset/Drone/train/S2_kicking_toLeft_HD.mp4', '/public/home/zhouz/perl5/dataset/Drone/train/S7_running_backView_HD.mp4', '/public/home/zhouz/perl5/dataset/Drone/train/S1_kicking_toLeft_HD.mp4', '/public/home/zhouz/perl5/dataset/Drone/train/S4_punching_toRight_HD.mp4', '/public/home/zhouz/perl5/dataset/Drone/train/S4_hittingStick_toRight_HD.mp4']]
         tymode = 'train'
-        # print('videos:', videos)   # [('/home/zhouzhuo/scratch/HID/Normal/normal082.mp4', '/home/zhouzhuo/scratch/HID/Stealing/stealing129.mp4', '/home/zhouzhuo/scratch/HID/Before_Stealing/Before_Stealing028.mp4', '/home/zhouzhuo/scratch/HID/Stealing/stealing137.mp4', '/home/zhouzhuo/scratch/HID/Stealing/stealing125.mp4', '/home/zhouzhuo/scratch/HID/Stealing/stealing033.mp4', '/home/zhouzhuo/scratch/HID/Normal/normal026.mp4', '/home/zhouzhuo/scratch/HID/Normal/normal220.mp4')]
         videos = videos[0]
-        print('videos1:', videos)  # ('/home/zhouzhuo/scratch/HID/Normal/normal082.mp4', '/home/zhouzhuo/scratch/HID/Stealing/stealing129.mp4', '/home/zhouzhuo/scratch/HID/Before_Stealing/Before_Stealing028.mp4', '/home/zhouzhuo/scratch/HID/Stealing/stealing137.mp4', '/home/zhouzhuo/scratch/HID/Stealing/stealing125.mp4', '/home/zhouzhuo/scratch/HID/Stealing/stealing033.mp4', '/home/zhouzhuo/scratch/HID/Normal/normal026.mp4', '/home/zhouzhuo/scratch/HID/Normal/normal220.mp4')
-        # print('inputs1:', inputs1)
-        #easy_preds, easy1, feature, easy2 = model(inputs1, videos, tymode)
         outputs, person_ids = model(person_infos, videos, tymode)
-        # print('outputs:', outputs)  # outputs: [tensor([[-4.0140, -6.4971, 17.4509]], device='cuda:0', grad_fn=<ViewBackward0>), tensor([[ 0.0194, -1.2106,  0.6324]], device='cuda:0', grad_fn=<ViewBackward0>), tensor([[-0.8700, -1.0453,  1.2860]], device='cuda:0', grad_fn=<ViewBackward0>)]
-        # if len(outputs) == 0:
-        #     outputs = [[ 0.8, 0.2, 0.0]]
-        #     outputs = [torch.tensor(outputs, requires_grad=True).cuda(),]
         #normal:0, before:1, thefting:2
         before = False
         theft = False
@@ -136,36 +105,10 @@ def train_epoch(
             preds = before_pred
         if theft:
             preds = theft_pred
-        
-        
-        # preds = outputs[0]
-        # print('outputs:', outputs)  # outputs: [tensor([[ 0.0487, -0.0020,  0.1384]], device='cuda:0', grad_fn=<ViewBackward0>)]
-        # print('preds:', preds)  # tensor([[ 0.0487, -0.0020,  0.1384]], device='cuda:0', grad_fn=<ViewBackward0>)
         inputs = outputs
-        # for person_id in person_infos.keys():
-        #     # print('person_id:', person_id)
-        #     # print('person_infos[person_id]:', person_infos[person_id], person_infos[person_id][0].shape)
-        #     inputs.append(person_infos[person_id][0])
-
-        # print('inputs', )
         loss_fun = losses.get_loss_func(cfg.MODEL.LOSS_FUNC)(reduction="mean")
         labels = labels.cuda()
-        # print('preds:', preds)
-        # print('labels:', labels)
         all_loss = loss_fun(preds, labels)
-        # print('all_loss', all_loss)
-        # hard_loss_dis = loss_fun(hard_preds_dis, old_labels)
-
-        # lkd_loss = losses.KnowledgeDistillationLoss()
-        # lkd_loss = lkd_loss(easy_preds, 0.1 * hard_preds_dis)
-        # print('easy_preds, easy2', easy_preds, easy2)
-        # lkd_loss_self = losses.KnowledgeDistillationLoss()
-        # lkd_loss1 = lkd_loss_self(easy1, easy2)
-
-        # all_loss = easy_loss + hard_loss + lkd_loss
-        # all_loss = 0.01 * hard_loss + easy_loss + lkd_loss + lkd_loss1 + lkd_loss2
-        # all_loss = easy_loss
-        # check Nan Loss.
         misc.check_nan_losses(all_loss)
 
         # Perform the backward pass.
@@ -236,27 +179,13 @@ def train_epoch(
 
         max_indices_array.append(max_indices_id)
         labels_array.append(labels_id)
-        # print('max_indices_array: ', max_indices_array)
-        # print('labels_array: ', labels_array)
         
-
-        # precision, recall, f1, _ = precision_recall_fscore_support(labels_array, max_indices_array, average='weighted')
-        # precision, recall, f1, _ = precision_recall_fscore_support(labels_array, max_indices_array, average='weighted', zero_division=0)
-
-        # print('precision: ', precision)
-        # print('recall: ', recall)
-        # print('f1: ', f1)
-
-        # precisions.append(precision)
-        # recalls.append(recall)
-        # f1s.append(f1)
     # Log epoch stats.
 
     precision, recall, f1, _ = precision_recall_fscore_support(labels_array, max_indices_array, average='weighted')
 
     print('precision, recall, f1: ', precision, recall, f1)
-    # print('average_recall: ', average_recall)
-    # print('average_f1: ', average_f1)
+
     train_meter.log_epoch_stats(cur_epoch)
     train_meter.reset()
 
@@ -281,33 +210,8 @@ def eval_epoch(val_loader, model, val_meter, cur_epoch, cfg, writer=None):
     val_meter.iter_tic()
 
     for cur_iter, (person_infos, videos, labels, _, meta) in enumerate(val_loader):
-        # inputs = []
-        # for person_id in person_infos.keys():
-        #     # print('person_id:', person_id)
-        #     # print('person_infos[person_id]:', person_infos[person_id], person_infos[person_id][0].shape)
-        #     inputs.append(person_infos[person_id][0])
-
-        # if cfg.NUM_GPUS:
-        #     # Transferthe data to the current GPU device.
-        #     if isinstance(inputs, (list,)):
-        #         for i in range(len(inputs)):
-        #             inputs[i] = inputs[i].cuda(non_blocking=True)
-        #     else:
-        #         inputs = inputs.cuda(non_blocking=True)
-        #     labels = labels.cuda()
-        #     for key, val in meta.items():
-        #         if isinstance(val, (list,)):
-        #             for i in range(len(val)):
-        #                 val[i] = val[i].cuda(non_blocking=True)
-        #         else:
-        #             meta[key] = val.cuda(non_blocking=True)
-
-
-            # preds = model(inputs)
         videos = videos[0]
-        # print('videos--1:', videos)
         tymode = 'val'
-        # preds, ps_scores, ns_scores = model(inputs1, inputs2, tymode)
         outputs, _ = model(person_infos, videos, tymode)
         before = False
         theft = False
@@ -335,8 +239,6 @@ def eval_epoch(val_loader, model, val_meter, cur_epoch, cfg, writer=None):
             preds = before_pred
         if theft:
             preds = theft_pred
-        # print('outputs:', outputs)  # outputs: [tensor([[ 0.0487, -0.0020,  0.1384]], device='cuda:0', grad_fn=<ViewBackward0>)]
-        # print('preds:', preds)  # tensor([[ 0.0487, -0.0020,  0.1384]], device='cuda:0', grad_fn=<ViewBackward0>)
         inputs = outputs
         labels = labels.cuda()
         if cfg.DATA.MULTI_LABEL:
@@ -425,18 +327,6 @@ def calculate_and_update_precise_bn(loader, model, num_iters=200, use_gpu=True):
             inputs = inputs1
         inputs1 = [inputs, tymode]
         yield inputs1
-
-    # def _gen_loader1():
-    #     for inputs, _, _, _ in loader:
-    #         inputs2 = [inputs[1], ]
-    #         if use_gpu:
-    #             if isinstance(inputs2, (list,)):
-    #                 for i in range(len(inputs2)):
-    #                     inputs2[i] = inputs1[i].cuda(non_blocking=True)
-    #             else:
-    #                 inputs2 = inputs2.cuda(non_blocking=True)
-    #         inputs2 = inputs2
-    #         yield inputs2
 
     # Update the bn stats.
     update_bn_stats(model, _gen_loader(), num_iters)
