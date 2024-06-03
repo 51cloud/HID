@@ -8,7 +8,7 @@ PyTorch implementation of the article Uncovering the Unseen: Discover Hidden Int
 
 ## Introduction
 
-HID (Hidden Intention Discovery) focuses on discovering hidden intentions when humans try to hide their intentions for abnormal behavior. HID presents a unique challenge in that hidden intentions lack the obvious visual representations to distinguish them from normal intentions. We find that the difference between hidden and normal intentions can be reasoned from multiple microbehaviors, such as gaze, attention, and facial expressions. Therefore, we first discover the relationship between micro-behavior and hidden intentions and use graph structure to reason about hidden intentions.
+HID (Hidden Intention Discovery) focuses on discovering hidden intentions when humans try to hide their intentions for abnormal behavior. HID presents a unique challenge in that hidden intentions lack the obvious visual representations to distinguish them from normal intentions. We find that the difference between hidden and normal intentions can be reasoned from multiple microbehaviors, such as gaze, attention, and facial expressions. Therefore, we first discover the relationship between micro-behavior and hidden intentions and use multiple micro-behavior to discover hidden intentions.
 
 ## Framework
  <picture>
