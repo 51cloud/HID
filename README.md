@@ -18,7 +18,7 @@ HID (Hidden Intention Discovery) focuses on discovering hidden intentions when h
 </picture>
 
 ## Requirements
-We provide a large set of baseline results and trained models available for download in the HID [Model Zoo](MODEL_ZOO.md).
+We provide a large set of baseline results and trained models available for download in the Slowfast [Model Zoo](MODEL_ZOO.md).
 
 Please find installation instructions for HID in [INSTALL.md](INSTALL.md). 
 
