@@ -1,4 +1,4 @@
-# HID
+# Hiddden Intention Discovery (HID)
 
 PyTorch implementation of the article Uncovering the Unseen: Discover Hidden Intentions by Micro-Behavior Graph Reasoning. This work uses [`slowfast`](https://github.com/facebookresearch/SlowFast) as a baseline.
 
