@@ -203,44 +203,22 @@ class ResNetBasicHead(nn.Module):
             )
 
     def forward(self, inputs):
-        # print('inputs.shape:', inputs[0].shape)  # inputs.shape: torch.Size([1, 2048, 25, 7, 7])
-        # assert (
-        #     len(inputs) == self.num_pathways
-        # ), "Input tensor does not contain {} pathway".format(self.num_pathways)
-        # pool_out = []
-        # for pathway in range(self.num_pathways):
-        #     m = getattr(self, "pathway{}_avgpool".format(pathway))
-        #     pool_out.append(m(inputs[pathway]))
-        # print('x1.shape:', pool_out[0].shape)
-        # x = torch.cat(pool_out, 1)
         x = inputs[0]
         x = self.pool(x)
-        # print('x2.shape:', x.shape)
+
         # (N, C, T, H, W) -> (N, T, H, W, C).
         x = x.permute((0, 2, 3, 4, 1))
-        # print('x3.shape:', x.shape)
-        # feature = x
-        # Perform dropout.
+
         if hasattr(self, "dropout"):
             x = self.dropout(x)
-        # print('x4.shape:', x.shape)
-        x = self.projection(x)
 
-        # print('projection:', x.shape, x)
+        x = self.projection(x)
 
         # Performs fully convlutional inference.
         if not self.training:
             x = self.act(x)
             x = x.mean([1, 2, 3])
 
-        # x = self.act(x)
-        # x = x.mean([1, 2, 3])
-
         x = x.view(x.shape[0], -1)
-        #y = self.data_rule(x)
 
-        # print('x:', x.shape, x)
-        # x1 = x
-        # z = self.log_softmax(y)
-        # return x, x1, feature
         return x
