@@ -316,25 +316,6 @@ class Build_Graph(nn.Module):
         self.action = Action(self.out_channels, num_classes)
 
     def forward(self, af, ef, gf, attf, sf):
-        # x: b d c
-        # x = self.backbone(x)
-        # x = self.global_linear(x)
-        # af = af.cpu().detach().numpy()
-        # threshold_lower = 1.0e-5
-        # threshold_upper = 1.0e+5
-        # nan_indices = np.where(np.isnan(af))
-        # lower_indices = np.where(abs(af) <= threshold_lower)
-        # upper_indices = np.where(abs(af) >= threshold_upper)
-        
-        # # 替换异常值为随机数
-        # if len(nan_indices[0]) > 0:
-        #     af[nan_indices] = np.random.uniform(0.001, 0.01, size=len(nan_indices[0]))
 
-        # if len(lower_indices[0]) > 0:
-        #     af[lower_indices] = np.random.uniform(0.001, 0.01, size=len(lower_indices[0]))
-        
-        # if len(upper_indices[0]) > 0:
-        #     af[upper_indices] = np.random.uniform(0.001, 0.01, size=len(upper_indices[0]))
-        # af = torch.from_numpy(af).cuda()
         cl, cl_edge = self.action(af, ef, gf, attf, sf)
         return cl, cl_edge
