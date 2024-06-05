@@ -22,7 +22,9 @@ We provide a large set of baseline results and trained models available for down
 
 Please find installation instructions for HID in [INSTALL.md](INSTALL.md). 
 
-We will publish the HID dataset as soon.
+## How to download the datasets
+The full datasets can be downloaded via: 
+['Google Drive'](https://drive.google.com/drive/folders/1Yumk_BocNC7E64NekdPfT0nme5BX66g9?usp=sharing)
 
 ## Quick Start
 
